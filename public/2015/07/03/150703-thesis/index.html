@@ -1,0 +1,381 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+  <meta charset="utf-8">
+  
+  <title>thesis | すべてはシュタインズゲートの選択だ</title>
+  <meta name="author" content="Li Yi">
+  
+  <meta name="description" content="1 IntroductionThis part has been done.However, It need some modification later. Chapter 1
+1.1 Fingerprint Certification SystemFingerprint identificati">
+  
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+
+  <meta property="og:title" content="thesis"/>
+  <meta property="og:site_name" content="すべてはシュタインズゲートの選択だ"/>
+
+  
+    <meta property="og:image" content="undefined"/>
+  
+
+  
+    <link rel="alternative" href="/atom.xml" title="すべてはシュタインズゲートの選択だ" type="application/atom+xml">
+  
+  
+    <link href="/favicon.png" rel="icon">
+  
+  
+  <link rel="stylesheet" href="/css/bootstrap.min.css" media="screen" type="text/css">
+  <link rel="stylesheet" href="/css/font-awesome.css" media="screen" type="text/css">
+  <link rel="stylesheet" href="/css/style.css" media="screen" type="text/css">
+  <link rel="stylesheet" href="/css/highlight.css" media="screen" type="text/css">
+  <link rel="stylesheet" href="/css/google-fonts.css" media="screen" type="text/css">
+  <link rel="stylesheet" href="/css/responsive.css" media="screen" type="text/css">  
+  <link rel="stylesheet" href="/css/sidenav.css" media="screen" type="text/css">  
+  <!--[if lt IE 9]><script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script><![endif]-->
+
+  <script src="/js/jquery-2.0.3.min.js"></script>
+
+  <!-- analytics -->
+  
+
+</head>
+
+<body id="body" data-spy="scroll" data-target=".toc">
+  <div class="container" id="container">
+	<div class="content">
+	  <div class="page-header">		
+  <h1><a class="brand" href="/">すべてはシュタインズゲートの選択だ</a><span class="split"></span><span class="title">thesis</span><span class="date" id="title-date"><i class="fa fa-clock-o"></i> 2015-07-03</span></h1>
+</div>		
+
+<div class="row page">
+  <!-- cols -->	
+  
+  <div class="col-xs-12 col-sm-3 col-md-3 toc"> 
+	<!-- toc -->
+<script type="text/javascript">
+		jQuery(document).ready(function() {
+ 		   generateWikiTOC('.note', '.toc',  2 , 2 );
+		});
+</script>
+  </div><!-- col-md-3 -->
+  
+  
+
+  
+  <div class="col-xs-12 col-sm-9 col-md-9 note">
+	
+
+	  <!-- content -->
+	  <h1 id="1_Introduction">1 Introduction</h1><p>This part has been done.However, It need some modification later. <a href="http://lichcnpul.github.io/2015/06/22/1Introduction/" target="_blank" rel="external">Chapter 1</a></p>
+<h2 id="1-1_Fingerprint_Certification_System">1.1 Fingerprint Certification System</h2><p>Fingerprint identification system is an important identity authentication system. It will be more and more important in modern society. Traditional fields such as security system, access control system must use this technology. With the rise of the mobile Internet, more and more emerging fields such as e-commerce, electronic payment also need this technology.</p>
+<p>The traditional fingerprint recognition system adopts the following technical architecture:<br><img src="/images/1.png" alt="figure 1"><br>The business process is as follows:</p>
+<ol>
+<li>Users press the fingerprints on the fingerprints sensor.</li>
+<li>The sensor is connected to the computer system and sends the user’s fingerprints directly to the computer system.</li>
+<li>The similarity of fingerprint data between user and database will be compared.</li>
+<li>The fingerprint authentication system judges whether the user is authenticated by the similarity and returns the result to the user.</li>
+</ol>
+<p>However, with the rise of mobile Internet, the drawbacks of this traditional fingerprint authentication system were exposed. First is security issue, the user fingerprint data stored directly in the system computer, user’s fingerprint image information is easy to be stolen; Second is usability and cost issues, the traditional fingerprint system requires sensor to input users’ fingerprints and the system deployment requires a separate terminal hardware and terminal software. All these lead to increased costs and decreased usability. Third is a scalability issue, the architecture of host-database is not easy to extend. Once scenarios need to use the system, we must purchase the corresponding hardware and software, leading to poor scalability.</p>
+<p>In this paper, the drawbacks of traditional fingerprint identification system has been improved and reorganized. We developed a web-based fingerprint authentication system using smartphone, and used a number of security defense strategies to enhance the security of the system. Finally, the new approach can solve the security, usability, cost and scalability issues in the traditional fingerprint identification system.<br>System architecture is as follows:<br><img src="/images/2.png" alt="figure 2"><br>The innovation of the system is:</p>
+<ol>
+<li>Using smartphone camera instead of the traditional fingerprint sensor, to solve the cost and usability issues.</li>
+<li>Using Web Service to provide cross-platform service to solve the cost and scalability issues.</li>
+<li>Using enhanced security defense strategy, to solve the security issue.</li>
+</ol>
+<p>This paper focuses on the server solution based on enhanced security strategy.</p>
+<h2 id="1-2_Security_Threat_and_Defense_Strategy">1.2 Security Threat and Defense Strategy</h2><p>The following security threat will occur in the web-based fingerprint authentication system:</p>
+<h3 id="1-2-1_Intercept_Information">1.2.1 Intercept Information</h3><p>The purpose of intercepting information is to steal data content itself. This type of security threat is commonly referred to as data security threats. In the fingerprint authentication system, client needs to send the fingerprint image file to the server through network. During transmission, once the system is attacked, it may cause the fingerprint image data to be intercepted, and then the user information will be stolen.<br><img src="/images/3.png" alt="figure 3"></p>
+<h3 id="1-2-2_Replay_attack">1.2.2 Replay attack</h3><p>Destroying the validity of certification is a basic form of authentication attack. A replay attack is a form of network attack in which a valid data transmission is maliciously or fraudulently repeated or delayed. This is carried out either by the originator or by an adversary who intercepts the data and retransmits it, possibly as part of a masquerade attack by IP packet substitution.</p>
+<p>The classic example of replay attack is as follows:<br><img src="/images/4.png" alt="figure 4"><br>Suppose Alice wants to prove her identity to Bob. Bob requests her password as proof of identity, which Alice dutifully provides (possibly after some transformation like a hash function); meanwhile, Eve is eavesdropping on the conversation and keeps the password (or the hash). After the interchange is over, Eve (posing as Alice) connects to Bob; when asked for a proof of identity, Eve sends Alice’s password (or hash) read from the last session, which Bob accepts thus granting access to Eve.<br><img src="/images/5.png" alt="figure 5"></p>
+<h3 id="1-2-3_Data_Modification">1.2.3 Data Modification</h3><p>This type of network attacks is an extension of replay attack. Attackers using replay attack damage the system certification to enter the system. Then they can send the forged data to the server easily. And even they will do SQL injection attacks or modify server information. The basic model is as follows:<br><img src="/images/6.png" alt="figure 6"></p>
+<h2 id="1-3_Fingerprint_Certification_System_with_Enhanced_Security">1.3 Fingerprint Certification System with Enhanced Security</h2><h3 id="1-3-1_Image_Encryption">1.3.1 Image Encryption</h3><p>For attacks in 1.2.1, the usual defense strategy is image encryption. Before the client sends the image file, we can use a specific algorithm to encrypt image. Then client sends the file to the server. After the server receives the file, we will use the same algorithm to decrypt the image. In this case, even if attackers intercept the image file, he still cannot get the real information, thus preventing information leakage.<br><img src="/images/7.png" alt="figure 7"></p>
+<h3 id="1-3-2_Timestamp_Authentication">1.3.2 Timestamp Authentication</h3><p>It is efficient defense against replay attack to add timestamp to the system. To use this approach, we should ensure synchronization between client and server. First, the server generates a dynamic password from time to time. Second, the client sends a request to get the dynamic password. Finally, client sends username and dynamic password to login system. In this case, even if the middle man steal the password, it is only effective in a very short time.<br><img src="/images/8.png" alt="figure 8"></p>
+<h3 id="1-3-3_Challenge-Response_Authentication">1.3.3 Challenge-Response Authentication</h3><p>Challenge-Response Authentication is another effective method to prevent replay attack. The basic model is as follows:</p>
+<ol>
+<li>Client sends a request to login. (We can assume it is ‘GET’ request)</li>
+<li>Server generates a random number K=random (NUM), then return K to Client. Besides, server should save K to the session.</li>
+<li>Client calculates R=Hmac(K, P), then sends the result to the server. In the formula, K represents key (the random number), P represents user password, Hmac() is a Hash Function.</li>
+<li>Server gets the user password from database and does the same calculation R’=hmac() as step 3. Then comparing R’ with R, if R’ equals R, users will login system successfully.</li>
+</ol>
+<p>In this process, the man in the middle can only get K and R, but K is a random number while R is a hash result, the two numbers are both meaningless. Attackers cannot get user password through the two numbers. System security is improved.<br><img src="/images/9.png" alt="figure 9"></p>
+<h2 id="1-4_Fingerprint_Authentication_System_with_Enhanced_Security">1.4 Fingerprint Authentication System with Enhanced Security</h2><p>The paper discusses a fingerprint authentication system with enhanced security. First, we will use the new approach to instead of the traditional approach, we will not use fingerprint sensor to get user fingerprint data. Instead, we use smartphone camera to get the user information. It will be more convenient and low cost. Second, we use Web Service to provide web-based authentication service with enhanced security. We use some methods to improve the system security and prevent network attack. Finally, we will realize a new fingerprint authentication system with convenience, security and low cost.</p>
+<p>The paper will be divided into 7 chapters.<br>Chapter 1 expresses the problems of the existed fingerprints authentication system and gives a new approach to solve the problems.<br>Chapter 2 introduces the related work of fingerprints system and system security.<br>Chapter 3 gives the system architecture to show how it works.<br>Chapter 4 discusses the security strategy to prevent network attack.<br>Chapter 5 discusses fingerprints matcher web service.<br>Chapter 6 talks about match results.<br>Chapter 7 gives the conclusion.</p>
+<h1 id="2_Related_work">2 Related work</h1><p>This part will give some current research. Because our research is comprehensive research. This parts will contain three or more kinds of research.</p>
+<ul>
+<li>The research about Fingerprint Recognition System.</li>
+<li>The research about reversible watermark.</li>
+<li>The research about replay attack and security.</li>
+<li>The research about system architecture and REST web service.</li>
+<li>The research about barcode.</li>
+</ul>
+<h1 id="3_System_Architecture">3 System Architecture</h1><p>Chinese Version: <a href="http://lichcnpul.github.io/2015/06/26/3System-Architecture/" target="_blank" rel="external">Chapter 3</a> and <a href="http://lichcnpul.github.io/2015/06/29/Nancy-Framework/" target="_blank" rel="external">3.2 Nancy Framework</a><br>This chapter will introduce system flow and the choice of architecture. This part will be divided to two parts. Part One introduces the specification of the hole system; Part Two discusses system framework and how it works.</p>
+<h2 id="3-1_Basic_Business_Process">3.1 Basic Business Process</h2><h3 id="3-1-1_Business_Component">3.1.1 Business Component</h3><p>Business component contains four parts:</p>
+<ol>
+<li><p><strong>Client</strong>: smart phone(Android), fingerprint image acquisition module, feature extraction module, encryption module;</p>
+</li>
+<li><p><strong>Server</strong>: Web Sever，decryption module, authentication module, fingerprint matching module;</p>
+</li>
+<li><p><strong>Third-party components</strong>: Fingerprint Matcher SDK;</p>
+</li>
+<li><p><strong>Database</strong>: fingerprint image database, user database.</p>
+</li>
+</ol>
+<h3 id="3-1-2_Business_Flow">3.1.2 Business Flow</h3><p>The basic flow of the system is shown below:<br><img src="/images/thesis/chapter3/1.bmp" alt="basic flow"><br>Business process consists of the following processes:</p>
+<ol>
+<li><p><strong>Fingerprint Image Acquisition</strong>: User login android client, then the client calls camera and image acquisition module to get user fingerprint image.</p>
+</li>
+<li><p><strong>Image Preprocessing and Feature Extraction</strong>: The client calls feature extraction module to preprocess the fingerprint image and extract the feature of user’s fingerprint.</p>
+</li>
+<li><p><strong>Image Encryption</strong>: First the client receives the QR Code information from server, then it calls encryption module to encode fingerprint image with QR Code information.</p>
+</li>
+<li><p><strong>Image Upload</strong>: The client calls Web API to upload the encrypted fingerprint images to the server.</p>
+</li>
+<li><p><strong>Image Decryption</strong>: The server calls decryption module to decode the encrypted fingerprint image, then it will get original fingerprint image and QR Code information.</p>
+</li>
+<li><p><strong>User Authentication</strong>: The server calls authentication module to check the QR Code information and ensure the authenticity of the user.</p>
+</li>
+<li><p><strong>Fingerprint Matching</strong>: The server calls Fingerprint Matcher SDK to compare user-uploaded fingerprint image with the fingerprint database, then it will get the matching score.</p>
+</li>
+<li><p><strong>Result Display</strong>: The server sends the matching score back to the client. Then the client determines whether the user is authenticated by matching score.</p>
+</li>
+</ol>
+<h2 id="3-2_SOA_and_Web_Service">3.2 SOA and Web Service</h2><h3 id="3-2-1_SOA">3.2.1 SOA</h3><p>SOA is service-oriented architecture. Simple, SOA is a kind of new architecture to develop application system. In the system based on SOA architecture, functionality of the application is a combination of the components together. These components are loosely coupled and have a unified interface definitions, we often called the components as service. The advantages of SOA architecture is to achieve cross-platform and scalability of application system.</p>
+<p>For example, in our fingerprint authentication system, now we need achieve an Android client and a server-side. Android client communicates with server-side and calls the API provided by server to achieve the functions of fingerprint upload and fingerprint authentication. In the traditional software architecture, the client and server development should be in the same technical architecture, for example, if the client uses Android technology, the server should also use Java EE technology; if the client uses Windows Phone technology, the server should also use .net framework. The software architecture model is a tightly coupled architecture. The advantage of this model is close cooperation, and the client and server both call the same underlying module. However, the disadvantage of this model is bad scalability. If you use .net technology to develop client side, the server-side has to use the same technology. This kind of architecture is not suitable for the development of mobile internet.</p>
+<p>In the mobile Internet era, a service often provides support for a variety of clients. For example, social software “Line” has some service for clients. The login service needs provide support for PC clients, it also needs provide support for Android clients and iOS clients, even it need provide the service for browser. If we use traditional system architecture, we have to write service code for every platform. However, the service code is almost the same. It does not conform the software engineering principle of DRY(Don‘t Repeat Yourself). In this background, SOA architecture have been developed rapidly.</p>
+<p>In SOA architecture each application functions will be packaged as service, while these services are platform-independent. Client communicates with server by message delivery. When the client needs call server API, it can send a message to the server interface, thus achieving the transformation of architecture from specific technology-oriented to service-oriented. Whether the client uses Android technology, or iOS technology, or web technology, or desktop technology, it can call the same service while it is not necessary to change any code in server-side. The SOA architecture model greatly enhanced cross-platform and scalability of application system, now SOA has became mainstream architecture model in mobile Internet era. Web Service is a kind of technology to achieve SOA.<br><img src="/images/thesis/chapter3/2.bmp" alt="SOA"></p>
+<h3 id="3-2-2_Web_Service">3.2.2 Web Service</h3><p>Web Service is one of the most commonly used techniques to achieve SOA. It provides services through a standard web protocol, the purpose of Web service is to ensure that different applications can interoperate.（<a href="https://en.wikipedia.org/wiki/Web_service" target="_blank" rel="external">Web Service</a>）</p>
+<p>After years of development, there are two main types of web service currently .</p>
+<ol>
+<li>SOAP-based Web Service</li>
+<li>REST-based Web Service</li>
+</ol>
+<p>SOAP-based Web Service: SOAP is used to describe the format of the information transmitted, WSDL is used to describe how to access specific interface, UDDI is used to manage, distribute, query Web Service. SOAP uses two protocols have been widely used: HTTP and XML(a subset of Standard Generalized Markup Language). HTTP is used to implement RPC-style SOAP transmissions, and XML is its encoding format. By using SOAP, Web Service has a good scalability, completely independent of the vendor, programming language and platform.</p>
+<p>REST-based Web Service: Dr. RT Fielding’s doctoral dissertation “Architectural Styles and the Design of Network-based Software Architectures” laid the basis for REST-style Web Service. REST is Representational State Transfer. It has the following characteristics:</p>
+<ol>
+<li>First REST is a style, not a standard.</li>
+<li>REST is based on resource.</li>
+<li>The purpose of REST is to decide how to make a well defined web application forward.</li>
+<li>REST makes full use of HTTP　protocol.</li>
+</ol>
+<ul>
+<li>It locates resources by logic URI.</li>
+<li>It distinguishes what format of data the client wants to get by HTTP Request Header Information.</li>
+<li>In REST architecture, the CRUD(create,read,update and delete) operation is handled by using different HTTP request methods.</li>
+</ul>
+<p><img src="/images/thesis/chapter3/3.bmp" alt="REST API"><br>The characteristics of REST style make it more lightweight than SOAP, fuller use HTTP protocol. REST really expresses the original intention of HTTP protocol. REST has completely changed the status of Web Service, adapted to the trend of mobile internet, and now the mainstream mobile client development has shifted to the REST style Web Service. In order to achieve the Android client of fingerprint verification, we also use REST style Web Service in our system.</p>
+<h2 id="3-3_Nancy_Framework">3.3 Nancy Framework</h2><p>We use Nancy Framework to achieve a lightweight REST-style Web Service. Nancy Framework is a lightweight web framework based on .Net and mono platforms, it follows the MVC model and is designed to provide REST-style Web Service. On its <a href="http://nancyfx.org/" target="_blank" rel="external">official website</a> , it introduces the following features of Nancy:</p>
+<ol>
+<li>Nancy is a lightweight, low-ceremony, framework for building HTTP based services on .Net and Mono. The goal of the framework is to stay out of the way as much as possible and provide a super-duper-happy-path to all interactions.</li>
+<li>Nancy is designed to handle DELETE, GET, HEAD, OPTIONS, POST, PUT and PATCH requests and provides a simple, elegant, Domain Specific Language (DSL) for returning a response with just a couple of keystrokes.</li>
+<li>Nancy is built to run anywhere.</li>
+</ol>
+<h3 id="3-3-1_MVC">3.3.1 MVC</h3><p>The design ideas of Nancy Framework comes from Ruby’s Sinatra Framework, whose basic idea is MVC model. MVC model is Model-View-Controller mode.</p>
+<ul>
+<li>Model is a part of application system to deal with data logic, typically used to encapsulate data objects to store data.</li>
+<li>View is a part of application system to display data to user. View data usually need to be obtained from model.</li>
+<li>Controller is responsible for reading data from the view, controlling user input, and sending data to the model.</li>
+</ul>
+<p><img src="/images/thesis/chapter3/4.bmp" alt="MVC"><br>The figure shows the basic principle of MVC model:</p>
+<ol>
+<li>First, user sends a request to the application, waiting for the server to respond.</li>
+<li>Controller receives the user request, then it decides which model or view to respond according to the header of request.</li>
+<li>Controller sends data requests to model.</li>
+<li>Model gets data from database and returns the data to controller</li>
+<li>controller sends the acquired data to the corresponding view.</li>
+<li>Fill view according to the model data, and return the results to the controller.</li>
+<li>Controller returns view to user.</li>
+</ol>
+<p>Through MVC model, the separation of application business logic and performance is realized. It also reduces the coupling between modules. Now more and more application systems are using MVC model, many frameworks also follow the MVC model, such as Ruby on Rails, Java Spring MVC, ASP.net MVC etc.. The Nancy Framework which we used is also a super lightweight MVC framework on .net platform.</p>
+<h3 id="3-3-2_Nancy_Framework">3.3.2 Nancy Framework</h3><p>Nancy Framework is a super lightweight web framework on .net platform based on MVC mode. The structure of Nancy project is shown below:<br><img src="/images/thesis/chapter3/5.png" alt="Nancy"><br>In Nancy Framework, Model is M, Views is V, Module is C.</p>
+<ol>
+<li><p>Controller uses rest style, the basic mode is as follows: when user inputs uri <a href="http://hostaddress/" target="_blank" rel="external">http://hostaddress/</a> in the browser, the controller class of Nancy framework will match the corresponding controller based on uri firstly. This mechanism is called Route mechanism, it is the core of Nancy Framework to achieve REST-style controller. When a user requests the resources on root directory in ‘GET’ method, the controller will find the GET[“/“] controller based on Route mechanism. After the match is successful, the user request is processed by the controller. The controller can call the corresponding view resources and model resources in response to user requests.</p>
+<figure class="highlight csharp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">Get[<span class="string">"/"</span>] = parameters =&gt;</span><br><span class="line">&#123;</span><br><span class="line">    <span class="keyword">return</span> View[<span class="string">"index"</span>];</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>View takes HTML as the basic style, the official supported view engine is Radar engine, the syntax of Radar is similar to HTML.</p>
+<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="doctype">&lt;!DOCTYPE html&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="title">html</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="title">head</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="title">meta</span> <span class="attribute">charset</span>=<span class="value">"utf-8"</span> /&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="title">title</span>&gt;</span>Fingerprint Web Service Page<span class="tag">&lt;/<span class="title">title</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="title">head</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="title">body</span>&gt;</span></span><br><span class="line">    Content</span><br><span class="line"><span class="tag">&lt;/<span class="title">body</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="title">html</span>&gt;</span></span><br></pre></td></tr></table></figure>
+</li>
+<li><p>Model generally takes Database as objects and supports most of the ORM framework.</p>
+</li>
+</ol>
+<h2 id="3-4_System_Architecture_Diagram">3.4 System Architecture Diagram</h2><p>The architecture diagram of the fingerprint identification system is as follows:<br><img src="/images/thesis/chapter3/6.bmp" alt="System Architecture"></p>
+<h1 id="4_Security_Strategy">4 Security Strategy</h1><p>This part (<a href="http://lichcnpul.github.io/2015/06/24/4Security-Strategy/" target="_blank" rel="external">4.1</a> and <a href="http://lichcnpul.github.io/2015/06/25/Algorithm/" target="_blank" rel="external">Algorithm</a>) have been written. However, I am doing some systemative tests, so it will be modified later.<br>This chapter discuss the security strategy in the fingerprint authentication system. First, we will talk about security threat briefly; Second, we discuss the traditional approach to enhance security; Third, we give a fingerprint watermark approach to solve the security problems. We will discuss reversible watermarking technology in this part.</p>
+<h2 id="4-1_Security_Threat_and_Common_Approach">4.1 Security Threat and Common Approach</h2><h3 id="4-1-1_Security_Threat">4.1.1 Security Threat</h3><p>As we have talked in chapter 1, there are some types of internet attack. One is to <strong>intercept information</strong>. The purpose of intercepting information is to steal data content itself. Another one is to <strong>replay attack</strong>. Replay attack is a form of network attack in which a valid data transmission is maliciously or fraudulently repeated or delayed. In our system, attackers will try to intercept user’s packages which contain fingerprint images. This is a kind of intercept attack. In this case, user information will be leaked. In addition, the attackers intercept data packages then they can resend these data packages to the server regardless of whether the data is encrypted. This is a kind of replay attack. Attackers use replay attack to realize the purpose of spoofing server. Then the server will consider the attacker to be the original user.</p>
+<p>The fingerprint authentication system should be security. We try to design some security subsystem to enhance the system security. Then the system should be prevent information interception and replay attack.</p>
+<h3 id="4-1-2_Common_Approach">4.1.2 Common Approach</h3><p>File encryption and digital signature is a common approach to enhance system security.</p>
+<ul>
+<li>File encryption : Prevent information leaks.</li>
+<li>Digital signature : Ensure the message sent by the original sender.</li>
+</ul>
+<p>File encryption： The basic process flow of file encryption is to encode the original file by an algorithm, making it unreadable(commonly referred to as “ciphertext”). The original file cannot be displayed without <strong>key</strong>. By this way we can prevent data from being illegally stolen. The reverse process is called decryption. such as: <a href="http://blog.csdn.net/stpeace/article/details/8315772" target="_blank" rel="external">Algorithm 1</a> and <a href="http://wenku.baidu.com/link?url=Szecji7gvHr35DDq2ltqNqa4aYdajxnfNinz8WA3_4WWVXKHgj6IFUvjTgY_V-w9eqcz4YppASDBfejSm0cIMGMZA62YlXNME9e2ZfxwVoK" target="_blank" rel="external">Algorithm 2</a></p>
+<p>Digital signature: A digital signature is a mathematical technique used to validate the authenticity and integrity of a message, software or digital document. see <a href="http://searchsecurity.techtarget.com/definition/digital-signature" target="_blank" rel="external">searchsecurity</a>. The basic flow of digital signature is like this:<br><img src="/images/thesis/1.png" alt="figure 1"><br>From this diagram, we can know how digital-signature works. First, the data sender uses his private key to encode the information he prepared to send, then he gets a signed message. Second, he send the signed message to the receiver. The receiver gets the signed message and decodes the message by the sender’s public key. Then the receiver gets the decrypted hash. If the decrypted hash matches a second computed hash of the same data, it proves that the data hasn’t changed since it was signed. Otherwise, it proves that the data has been changed by attackers since it was signed.</p>
+<h3 id="4-1-3_New_Approach">4.1.3 New Approach</h3><p>The traditional approach is good enough to enhance system security and prevent internet attack. However, there are still some disadvantages to apply it to our fingerprint system.</p>
+<ol>
+<li><strong>Complex</strong>. Digital-signature need to be controlled in a complex architecture. Besides, we need to build two separate subsystems, one is for file encryption, the other one is for digital signature. It will be more complex.</li>
+<li><strong>Common Approach</strong>. It is a common approach to enhance system security. It does not take into account the characteristics of the fingerprint image.</li>
+</ol>
+<p>In order to overcome the two drawbacks, we try to propose a new approach. The new approach is a kind of reversible digital watermark technology and it combine file encryption with authentication. We will discuss the detail in 4.3 Solution and 4.4 Algorithm.</p>
+<h2 id="4-2_Architecture">4.2 Architecture</h2><h2 id="4-3_Solution">4.3 Solution</h2><h2 id="4-4_Algorithm">4.4 Algorithm</h2><h3 id="4-4-1_Display_Matrix">4.4.1 Display Matrix</h3><p>Suppose the QR Code image matrix is：</p>
+<p>$Q=\begin{bmatrix}<br>255 &amp; 254 &amp; 255 &amp; 1 &amp; 2 &amp; \cdots\\<br>255 &amp; 255 &amp; 255 &amp; 1 &amp; 1 &amp; \cdots\\<br>\cdots &amp; \cdots &amp; \cdots &amp; \cdots &amp; \cdots &amp; \cdots<br>\end{bmatrix}$</p>
+<p>Its binary form is：</p>
+<p>$Q=\begin{bmatrix}<br>111111\color{red}{11} &amp; 111111\color{red}{10} &amp; 111111\color{red}{11} &amp; 000000\color{red}{01} &amp; 000000\color{red}{10} &amp; \cdots\\<br>111111\color{red}{11} &amp; 111111\color{red}{11} &amp; 111111\color{red}{11} &amp; 000000\color{red}{01} &amp; 000000\color{red}{01} &amp; \cdots\\<br>\cdots &amp; \cdots &amp; \cdots &amp; \cdots &amp; \cdots &amp; \cdots<br>\end{bmatrix}$</p>
+<p>The watermark image matrix is:</p>
+<p>$M=\begin{bmatrix}<br>167 &amp; 63 &amp; 15 &amp; \cdots\\<br>255 &amp; 127 &amp; 128 &amp; \cdots\\<br>\cdots &amp; \cdots &amp; \cdots &amp; \cdots<br>\end{bmatrix}$</p>
+<p>Its binary form is:</p>
+<p>$M=\begin{bmatrix}<br>10100111 &amp; 00111111 &amp; 00001111 &amp; \cdots\\<br>11111111 &amp; 01111111 &amp; 10000000 &amp; \cdots\\<br>\cdots &amp; \cdots &amp; \cdots &amp; \cdots<br>\end{bmatrix}$</p>
+<p>Now we will separate the watermark matrix to encode it to the QRcode matrix.<br>Let’s focus the watermark matrix first.</p>
+<h3 id="4-4-2_Watermark_Matrix">4.4.2 Watermark Matrix</h3><p>For the watermark matrix above, we called it M, we can see M(1,1)=167, in binary form, M(1,1)=10100111. We separate it to 4 parts.</p>
+<p><strong><font color="red" size="6">10</font></strong><strong><font color="green" size="6">10</font></strong><strong><font color="blue" size="6">01</font></strong><strong><font color="yellow" size="6">11</font></strong></p>
+<ol>
+<li>The Red Part: the 1-2 bit</li>
+<li>The Green Part: the 3-4 bit</li>
+<li>The Blue Part: the 5-6 bit</li>
+<li>The Yellow Part: the 7-8 bit</li>
+</ol>
+<p>Then we can get 4 matrix from 4 parts:<br>1.The Red Part Matrix is:</p>
+<p>$M1=\begin{bmatrix}<br>10 &amp; 00 &amp; 00 &amp; \cdots\\<br>11 &amp; 01 &amp; 10 &amp; \cdots\\<br>\cdots &amp; \cdots &amp; \cdots &amp; \cdots<br>\end{bmatrix}=\begin{bmatrix}<br>2 &amp; 0 &amp; 0 &amp; \cdots\\<br>3 &amp; 1 &amp; 2 &amp; \cdots\\<br>\cdots &amp; \cdots &amp; \cdots &amp; \cdots<br>\end{bmatrix}$</p>
+<p>2.The Green Part Matrix is:</p>
+<p>$M2=\begin{bmatrix}<br>10 &amp; 11 &amp; 00 &amp; \cdots\\<br>11 &amp; 11 &amp; 00 &amp; \cdots\\<br>\cdots &amp; \cdots &amp; \cdots &amp; \cdots<br>\end{bmatrix}=\begin{bmatrix}<br>2 &amp; 3 &amp; 0 &amp; \cdots\\<br>3 &amp; 3 &amp; 0 &amp; \cdots\\<br>\cdots &amp; \cdots &amp; \cdots &amp; \cdots<br>\end{bmatrix}$</p>
+<p>3.The Blue Part Matrix is:</p>
+<p>$M3=\begin{bmatrix}<br>01 &amp; 11 &amp; 11 &amp; \cdots\\<br>11 &amp; 01 &amp; 00 &amp; \cdots\\<br>\cdots &amp; \cdots &amp; \cdots &amp; \cdots<br>\end{bmatrix}=\begin{bmatrix}<br>1 &amp; 3 &amp; 3 &amp; \cdots\\<br>3 &amp; 1 &amp; 0 &amp; \cdots\\<br>\cdots &amp; \cdots &amp; \cdots &amp; \cdots<br>\end{bmatrix}$</p>
+<p>4.The Yellow Part Matrix is:</p>
+<p>$M4=\begin{bmatrix}<br>11 &amp; 11 &amp; 11 &amp; \cdots\\<br>11 &amp; 11 &amp; 00 &amp; \cdots\\<br>\cdots &amp; \cdots &amp; \cdots &amp; \cdots<br>\end{bmatrix}=\begin{bmatrix}<br>3 &amp; 3 &amp; 3 &amp; \cdots\\<br>3 &amp; 3 &amp; 0 &amp; \cdots\\<br>\cdots &amp; \cdots &amp; \cdots &amp; \cdots<br>\end{bmatrix}$</p>
+<h3 id="4-4-3_Encoding_Method">4.4.3 Encoding Method</h3><h4 id="4-4-3-1_Why_we_can_encode_QRCode_Image_with_watermark_image?">4.4.3.1 Why we can encode QRCode Image with watermark image?</h4><p>The QRCode Image is bigger than watermark image. The rows of QRCode image is 3 times higher than watermark image; the colmns is 5 times higher than watermark image. So we can embed the watermark matrix into qrcode matrix. It is very important. In our method, the watermark matrix M is a 392*357 matrix; the qrcode matrix Q is a 900*5000 matrix.</p>
+<p>In addition, the QRCode image and watermark image are both grayscale images.</p>
+<h4 id="4-4-3-2_How_to_encode?">4.4.3.2 How to encode?</h4><p>We use Least Significant Bit Algorithm. First, we separate matrix Q to 5 parts.</p>
+<p>$Q=\begin{bmatrix}<br>A&amp;B&amp; \\<br>C&amp;D&amp; \\<br> &amp; &amp;E<br>\end{bmatrix}$</p>
+<p>For matrix A,B,C,D, they are all 392*357 matrix. E is the rest part of Q.<br>Then we use A,B,C,D and M1,M2,M3,M4 to encode. We set the least 2 bits of A,B,C,D to 0. For example:</p>
+<p>$A=\begin{bmatrix}<br>111111\color{red}{11} &amp; 111111\color{red}{10} &amp; 111111\color{red}{11} &amp; 000000\color{red}{01} &amp; 000000\color{red}{10} &amp; \cdots\\<br>111111\color{red}{11} &amp; 111111\color{red}{11} &amp; 111111\color{red}{11} &amp; 000000\color{red}{01} &amp; 000000\color{red}{01} &amp; \cdots\\<br>\cdots &amp; \cdots &amp; \cdots &amp; \cdots &amp; \cdots &amp; \cdots<br>\end{bmatrix}$</p>
+<p>set the least 2 bits to 0:</p>
+<p>$A1=\begin{bmatrix}<br>111111\color{red}{00} &amp; 111111\color{red}{00} &amp; 111111\color{red}{00} &amp; 000000\color{red}{00} &amp; 000000\color{red}{00} &amp; \cdots\\<br>111111\color{red}{00} &amp; 111111\color{red}{00} &amp; 111111\color{red}{00} &amp; 000000\color{red}{00} &amp; 000000\color{red}{00} &amp; \cdots\\<br>\cdots &amp; \cdots &amp; \cdots &amp; \cdots &amp; \cdots &amp; \cdots<br>\end{bmatrix}$</p>
+<p>then we use matrix M1 instead of the least 2 bits of A:<br><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">A2 = A1 + M1</span><br></pre></td></tr></table></figure></p>
+<p>For B,C,D and M2,M3,M4 ,we do the some operation:<br><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">B2 = B1 + M2</span><br><span class="line">C2 = C1 + M3</span><br><span class="line">D2 = D1 + M4</span><br></pre></td></tr></table></figure></p>
+<p>After that, we will get a new matrix called Q2:</p>
+<p>$Q2=\begin{bmatrix}<br>A2&amp;B2&amp; \\<br>C2&amp;D2&amp; \\<br> &amp; &amp;E<br>\end{bmatrix}$</p>
+<p>The matrix Q2 contains all the information of watermark images. Now we have realized Encoding Module.</p>
+<h3 id="4-4-4_Decoding_Method">4.4.4 Decoding Method</h3><p>It is easy to get the watermark matrix. From Q2 we can extract A2,B2,C2,D2, then we will get M1,M2,M3,M4 by mod([A2,B2,C2,D2],4).<br><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">M1(i,j) = A2(i,j) mod <span class="number">4</span></span><br><span class="line">M2(i,j) = B2(i,j) mod <span class="number">4</span></span><br><span class="line">M3(i,j) = C2(i,j) mod <span class="number">4</span></span><br><span class="line">M4(i,j) = D2(i,j) mod <span class="number">4</span></span><br></pre></td></tr></table></figure></p>
+<p>From M1, M2, M3, M4, we will recover watermark matrix easily.<br><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">M(i,j)=M4(i,j)＋<span class="number">4</span> * M3(i,j)＋<span class="number">16</span> * M2(i,j)＋<span class="number">64</span> * M1(i,j)</span><br></pre></td></tr></table></figure></p>
+<p>In this way, now we have already recover the watermark matrix.</p>
+<h1 id="5_Fingerprint_Matching">5 Fingerprint Matching</h1><h2 id="5-1_Basic_concept">5.1 Basic concept</h2><h2 id="5-2_Exist_Tools">5.2 Exist Tools</h2><h2 id="5-3_SourceAFIS">5.3 SourceAFIS</h2><h1 id="6_Communication_and_Results">6 Communication and Results</h1><h1 id="7_Conclusion">7 Conclusion</h1><h1 id="Reference">Reference</h1>	  
+
+	  <div>
+  		<center>
+		  <div class="pagination">
+<ul class="pagination">
+	
+	
+	
+	
+	
+		
+	
+		
+			
+			
+		
+	
+		
+			
+			
+		
+	
+		
+	
+		
+	
+		
+	
+		
+	
+		
+	
+		
+	
+		
+	
+	
+		<li class="prev disabled"><a><i class="fa fa-arrow-circle-o-left"></i>prev</a></li>
+	
+	<li><a href="/"><i class="fa fa-archive"></i>Home</a></li>
+	
+		<li class="next disabled"><a>next<i class="fa fa-arrow-circle-o-right"></i></a></li>
+	
+</ul>
+</div>
+
+		</center>
+	  </div>
+	  
+	</div> <!-- col-md-9/col-md-12 -->
+	
+  </div><!-- row -->
+
+	</div>
+  </div>
+  <div class="container-narrow">
+	<footer> <p>
+  &copy; 2015 <a href="http://www.cnblogs.com/Kassadin/" target="_blank">Li Yi</a>
+  
+      . Thanks for <a href="http://zespia.tw/hexo/" target="_blank">Hexo</a> , <a href="http://getbootstrap.com/" target="_blank">Twitter Bootstrap</a> and <a href="http://github.com/wzpan/hexo-theme-wixo/">Wixo</a>.
+</p>
+ </footer>
+  </div> <!-- container-narrow -->
+  
+<a id="gotop" href="#">
+  <span>▲</span>
+</a>
+
+<script src="/js/jquery.imagesloaded.min.js"></script>
+<script src="/js/gallery.js"></script>
+<script src="/js/bootstrap.min.js"></script>
+<script src="/js/jquery.tableofcontents.min.js"></script>
+<script src="/js/tocgenerator.min.js"></script>
+<script src="/js/main.js"></script>
+
+
+
+
+<link rel="stylesheet" href="/fancybox/jquery.fancybox.css" media="screen" type="text/css">
+<script src="/fancybox/jquery.fancybox.pack.js"></script>
+<script type="text/javascript">
+(function($){
+  $('.fancybox').fancybox();
+})(jQuery);
+</script>
+
+
+<!-- mathjax config similar to math.stackexchange -->
+
+<script type="text/x-mathjax-config">
+  MathJax.Hub.Config({
+    tex2jax: {
+      inlineMath: [ ['$','$'], ["\\(","\\)"] ],
+      processEscapes: true
+    }
+  });
+</script>
+
+<script type="text/x-mathjax-config">
+    MathJax.Hub.Config({
+      tex2jax: {
+        skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']
+      }
+    });
+</script>
+
+<script type="text/x-mathjax-config">
+    MathJax.Hub.Queue(function() {
+        var all = MathJax.Hub.getAllJax(), i;
+        for(i=0; i < all.length; i += 1) {
+            all[i].SourceElement().parentNode.className += ' has-jax';
+        }
+    });
+</script>
+
+<script type="text/javascript" src="http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML">
+</script>
+
+
+</body>
+</html>

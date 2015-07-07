@@ -1,0 +1,231 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+  <meta charset="utf-8">
+  
+  <title>3. System Architecture | すべてはシュタインズゲートの選択だ</title>
+  <meta name="author" content="Li Yi">
+  
+  <meta name="description" content="Chapter 3 System Architecture本章介绍系统总体业务逻辑与架构选择。本章分为2部分，第一部分介绍系统总体业务流程，第二部分阐述跨平台服务器端框架及其工作原理。
+3.1 Basic Business Process3.1.1 Business Component业务组件包含4">
+  
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+
+  <meta property="og:title" content="3. System Architecture"/>
+  <meta property="og:site_name" content="すべてはシュタインズゲートの選択だ"/>
+
+  
+    <meta property="og:image" content="undefined"/>
+  
+
+  
+    <link rel="alternative" href="/atom.xml" title="すべてはシュタインズゲートの選択だ" type="application/atom+xml">
+  
+  
+    <link href="/favicon.png" rel="icon">
+  
+  
+  <link rel="stylesheet" href="/css/bootstrap.min.css" media="screen" type="text/css">
+  <link rel="stylesheet" href="/css/font-awesome.css" media="screen" type="text/css">
+  <link rel="stylesheet" href="/css/style.css" media="screen" type="text/css">
+  <link rel="stylesheet" href="/css/highlight.css" media="screen" type="text/css">
+  <link rel="stylesheet" href="/css/google-fonts.css" media="screen" type="text/css">
+  <link rel="stylesheet" href="/css/responsive.css" media="screen" type="text/css">  
+  <link rel="stylesheet" href="/css/sidenav.css" media="screen" type="text/css">  
+  <!--[if lt IE 9]><script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script><![endif]-->
+
+  <script src="/js/jquery-2.0.3.min.js"></script>
+
+  <!-- analytics -->
+  
+
+</head>
+
+<body id="body" data-spy="scroll" data-target=".toc">
+  <div class="container" id="container">
+	<div class="content">
+	  <div class="page-header">		
+  <h1><a class="brand" href="/">すべてはシュタインズゲートの選択だ</a><span class="split"></span><span class="title">3. System Architecture</span><span class="date" id="title-date"><i class="fa fa-clock-o"></i> 2015-06-26</span></h1>
+</div>		
+
+<div class="row page">
+  <!-- cols -->	
+  
+  <div class="col-xs-12 col-sm-3 col-md-3 toc"> 
+	<!-- toc -->
+<script type="text/javascript">
+		jQuery(document).ready(function() {
+ 		   generateWikiTOC('.note', '.toc',  2 , 2 );
+		});
+</script>
+  </div><!-- col-md-3 -->
+  
+  
+
+  
+  <div class="col-xs-12 col-sm-9 col-md-9 note">
+	
+
+	  <!-- content -->
+	  <h1 id="Chapter_3_System_Architecture">Chapter 3 System Architecture</h1><p>本章介绍系统总体业务逻辑与架构选择。本章分为2部分，第一部分介绍系统总体业务流程，第二部分阐述跨平台服务器端框架及其工作原理。</p>
+<h2 id="3-1_Basic_Business_Process">3.1 Basic Business Process</h2><h3 id="3-1-1_Business_Component">3.1.1 Business Component</h3><p>业务组件包含4部分：</p>
+<ol>
+<li><p><strong>客户端</strong>: 包含Android智能手机，指纹图片采集模块，特征提取模块，加密模块；</p>
+</li>
+<li><p><strong>服务器端</strong>: 包含Web Sever，解密模块，认证模块，指纹匹配模块；</p>
+</li>
+<li><p><strong>第三方组件</strong>: 包含Fingerprint Matcher SDK；</p>
+</li>
+<li><p><strong>数据库</strong>: 包含指纹图像数据库，用户数据库等。</p>
+</li>
+</ol>
+<h3 id="3-1-2_Business_Flow">3.1.2 Business Flow</h3><p>系统总体业务流程如下图所示：<br><img src="/images/thesis/chapter3/1.bmp" alt="业务流程图"><br>系统业务流程包含以下几个过程：</p>
+<ol>
+<li><p><strong>指纹图像采集</strong>: 用户使用Android手机登录客户端，客户端调用照相机和图像采集模块采集用户指纹图像。</p>
+</li>
+<li><p><strong>图像预处理与特征提取</strong>: 客户端调用特征提取模块对采集到的指纹对象进行预处理，图像增强与特征提取。</p>
+</li>
+<li><p><strong>图像加密</strong>: 客户端首先接收服务器端发送的QRCode验证信息，然后调用加密模块利用二维码对指纹图像进行加密。</p>
+</li>
+<li><p><strong>图像上传</strong>: 客户端调用Web API，将加密后的指纹图像上传到服务器端，实现指纹信息的安全传输。</p>
+</li>
+<li><p><strong>图像解密</strong>: 服务器端调用解密模块对加密的指纹图片进行解密，解密后同时取得验证二维码信息和指纹图像原图片。</p>
+</li>
+<li><p><strong>用户认证</strong>: 服务器根据解密后得到的二维码认证信息对用户进行认证，确保用户的真实性。</p>
+</li>
+<li><p><strong>指纹匹配</strong>: 服务器端调用Matcher SDK对用户上传的指纹图片与指纹数据库的图片的对比，获取指纹匹配分数。</p>
+</li>
+<li><p><strong>验证结果显示</strong>: 服务器将指纹匹配分数返回给客户端，客户端根据匹配分数决定用户认证是否通过。</p>
+</li>
+</ol>
+<h2 id="3-2_Architecture_Design">3.2 Architecture Design</h2><h3 id="3-2-1_Object">3.2.1 Object</h3><p>// waiting to write. (First review something about MVC, Web Service and Nancy, then write this part.)</p>
+<h3 id="3-2-2_Web_Service">3.2.2 Web Service</h3><p>// same as 3.2.1</p>
+<h3 id="3-2-3_Nancy_Framework">3.2.3 Nancy Framework</h3><p>// same as 3.2.1 </p>
+	  
+
+	  <div>
+  		<center>
+		  <div class="pagination">
+<ul class="pagination">
+	
+	
+	
+	
+	
+		
+	
+		
+	
+		
+	
+		
+			
+		
+	
+		
+			
+			
+		
+	
+		
+			
+			
+			
+		
+	
+		
+			
+		
+	
+		
+			
+		
+	
+		
+	
+	
+		<li class="prev"><a href="/2015/06/29/Nancy-Framework/" class="alignleft prev"><i class="fa fa-arrow-circle-o-left"></i>prev</a></li>
+	
+	<li><a href="/"><i class="fa fa-archive"></i>Home</a></li>
+	
+		<li class="next"><a href="/2015/06/25/Algorithm/" class="alignright next">next<i class="fa fa-arrow-circle-o-right"></i></a></li>
+	
+</ul>
+</div>
+
+		</center>
+	  </div>
+	  
+	</div> <!-- col-md-9/col-md-12 -->
+	
+  </div><!-- row -->
+
+	</div>
+  </div>
+  <div class="container-narrow">
+	<footer> <p>
+  &copy; 2015 <a href="http://www.cnblogs.com/Kassadin/" target="_blank">Li Yi</a>
+  
+      . Thanks for <a href="http://zespia.tw/hexo/" target="_blank">Hexo</a> , <a href="http://getbootstrap.com/" target="_blank">Twitter Bootstrap</a> and <a href="http://github.com/wzpan/hexo-theme-wixo/">Wixo</a>.
+</p>
+ </footer>
+  </div> <!-- container-narrow -->
+  
+<a id="gotop" href="#">
+  <span>▲</span>
+</a>
+
+<script src="/js/jquery.imagesloaded.min.js"></script>
+<script src="/js/gallery.js"></script>
+<script src="/js/bootstrap.min.js"></script>
+<script src="/js/jquery.tableofcontents.min.js"></script>
+<script src="/js/tocgenerator.min.js"></script>
+<script src="/js/main.js"></script>
+
+
+
+
+<link rel="stylesheet" href="/fancybox/jquery.fancybox.css" media="screen" type="text/css">
+<script src="/fancybox/jquery.fancybox.pack.js"></script>
+<script type="text/javascript">
+(function($){
+  $('.fancybox').fancybox();
+})(jQuery);
+</script>
+
+
+<!-- mathjax config similar to math.stackexchange -->
+
+<script type="text/x-mathjax-config">
+  MathJax.Hub.Config({
+    tex2jax: {
+      inlineMath: [ ['$','$'], ["\\(","\\)"] ],
+      processEscapes: true
+    }
+  });
+</script>
+
+<script type="text/x-mathjax-config">
+    MathJax.Hub.Config({
+      tex2jax: {
+        skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']
+      }
+    });
+</script>
+
+<script type="text/x-mathjax-config">
+    MathJax.Hub.Queue(function() {
+        var all = MathJax.Hub.getAllJax(), i;
+        for(i=0; i < all.length; i += 1) {
+            all[i].SourceElement().parentNode.className += ' has-jax';
+        }
+    });
+</script>
+
+<script type="text/javascript" src="http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML">
+</script>
+
+
+</body>
+</html>

@@ -1,0 +1,229 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+  <meta charset="utf-8">
+  
+  <title>1. Introduction | すべてはシュタインズゲートの選択だ</title>
+  <meta name="author" content="Li Yi">
+  
+  <meta name="description" content="Chapter 1 Introduction1.1 Fingerprint Authentication SystemFingerprint identification system is an important identity authentication system. It will b">
+  
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+
+  <meta property="og:title" content="1. Introduction"/>
+  <meta property="og:site_name" content="すべてはシュタインズゲートの選択だ"/>
+
+  
+    <meta property="og:image" content="undefined"/>
+  
+
+  
+    <link rel="alternative" href="/atom.xml" title="すべてはシュタインズゲートの選択だ" type="application/atom+xml">
+  
+  
+    <link href="/favicon.png" rel="icon">
+  
+  
+  <link rel="stylesheet" href="/css/bootstrap.min.css" media="screen" type="text/css">
+  <link rel="stylesheet" href="/css/font-awesome.css" media="screen" type="text/css">
+  <link rel="stylesheet" href="/css/style.css" media="screen" type="text/css">
+  <link rel="stylesheet" href="/css/highlight.css" media="screen" type="text/css">
+  <link rel="stylesheet" href="/css/google-fonts.css" media="screen" type="text/css">
+  <link rel="stylesheet" href="/css/responsive.css" media="screen" type="text/css">  
+  <link rel="stylesheet" href="/css/sidenav.css" media="screen" type="text/css">  
+  <!--[if lt IE 9]><script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script><![endif]-->
+
+  <script src="/js/jquery-2.0.3.min.js"></script>
+
+  <!-- analytics -->
+  
+
+</head>
+
+<body id="body" data-spy="scroll" data-target=".toc">
+  <div class="container" id="container">
+	<div class="content">
+	  <div class="page-header">		
+  <h1><a class="brand" href="/">すべてはシュタインズゲートの選択だ</a><span class="split"></span><span class="title">1. Introduction</span><span class="date" id="title-date"><i class="fa fa-clock-o"></i> 2015-06-22</span></h1>
+</div>		
+
+<div class="row page">
+  <!-- cols -->	
+  
+  <div class="col-xs-12 col-sm-3 col-md-3 toc"> 
+	<!-- toc -->
+<script type="text/javascript">
+		jQuery(document).ready(function() {
+ 		   generateWikiTOC('.note', '.toc',  2 , 2 );
+		});
+</script>
+  </div><!-- col-md-3 -->
+  
+  
+
+  
+  <div class="col-xs-12 col-sm-9 col-md-9 note">
+	
+
+	  <!-- content -->
+	  <h1 id="Chapter_1_Introduction">Chapter 1 Introduction</h1><h2 id="1-1_Fingerprint_Authentication_System">1.1 Fingerprint Authentication System</h2><p>Fingerprint identification system is an important identity authentication system. It will be more and more important in modern society. Traditional fields such as security system, access control system must use this technology. With the rise of the mobile Internet, more and more emerging fields such as e-commerce, electronic payment also need this technology.</p>
+<p>The traditional fingerprint recognition system adopts the following technical architecture:<br><img src="/images/1.png" alt="figure 1"><br>The business process is as follows:</p>
+<ol>
+<li>Users press the fingerprints on the fingerprints sensor.</li>
+<li>The sensor is connected to the computer system and sends the user’s fingerprints directly to the computer system.</li>
+<li>The similarity of fingerprint data between user and database will be compared.</li>
+<li>The fingerprint authentication system judges whether the user is authenticated by the similarity and returns the result to the user.</li>
+</ol>
+<p>However, with the rise of mobile Internet, the drawbacks of this traditional fingerprint authentication system were exposed. First is security issue, the user fingerprint data stored directly in the system computer, user’s fingerprint image information is easy to be stolen; Second is usability and cost issues, the traditional fingerprint system requires sensor to input users’ fingerprints and the system deployment requires a separate terminal hardware and terminal software. All these lead to increased costs and decreased usability. Third is a scalability issue, the architecture of host-database is not easy to extend. Once scenarios need to use the system, we must purchase the corresponding hardware and software, leading to poor scalability.</p>
+<p>In this paper, the drawbacks of traditional fingerprint identification system has been improved and reorganized. We developed a web-based fingerprint authentication system using smartphone, and used a number of security defense strategies to enhance the security of the system. Finally, the new approach can solve the security, usability, cost and scalability issues in the traditional fingerprint identification system.<br>System architecture is as follows:<br><img src="/images/2.png" alt="figure 2"><br>The innovation of the system is:</p>
+<ol>
+<li>Using smartphone camera instead of the traditional fingerprint sensor, to solve the cost and usability issues.</li>
+<li>Using Web Service to provide cross-platform service to solve the cost and scalability issues.</li>
+<li>Using enhanced security defense strategy, to solve the security issue.</li>
+</ol>
+<p>This paper focuses on the server solution based on enhanced security strategy.</p>
+<h2 id="1-2_Security_Threat">1.2 Security Threat</h2><p>The following security threat will occur in the web-based fingerprint authentication system:</p>
+<h3 id="1-2-1_Intercept_Information">1.2.1 Intercept Information</h3><p>The purpose of intercepting information is to steal data content itself. This type of security threat is commonly referred to as data security threats. In the fingerprint authentication system, client needs to send the fingerprint image file to the server through network. During transmission, once the system is attacked, it may cause the fingerprint image data to be intercepted, and then the user information will be stolen.<br><img src="/images/3.png" alt="figure 3"></p>
+<h3 id="1-2-2_Replay_attack">1.2.2 Replay attack</h3><p>Destroying the validity of certification is a basic form of authentication attack. A replay attack is a form of network attack in which a valid data transmission is maliciously or fraudulently repeated or delayed. This is carried out either by the originator or by an adversary who intercepts the data and retransmits it, possibly as part of a masquerade attack by IP packet substitution.</p>
+<p>The classic example of replay attack is as follows:<br><img src="/images/4.png" alt="figure 4"><br>Suppose Alice wants to prove her identity to Bob. Bob requests her password as proof of identity, which Alice dutifully provides (possibly after some transformation like a hash function); meanwhile, Eve is eavesdropping on the conversation and keeps the password (or the hash). After the interchange is over, Eve (posing as Alice) connects to Bob; when asked for a proof of identity, Eve sends Alice’s password (or hash) read from the last session, which Bob accepts thus granting access to Eve.<br><img src="/images/5.png" alt="figure 5"></p>
+<h3 id="1-2-3_Data_Modification">1.2.3 Data Modification</h3><p>This type of network attacks is an extension of replay attack. Attackers using replay attack damage the system certification to enter the system. Then they can send the forged data to the server easily. And even they will do SQL injection attacks or modify server information. The basic model is as follows:<br><img src="/images/6.png" alt="figure 6"></p>
+<h2 id="1-3_Defense_Strategy">1.3 Defense Strategy</h2><h3 id="1-3-1_Image_Encryption">1.3.1 Image Encryption</h3><p>For attacks in 1.2.1, the usual defense strategy is image encryption. Before the client sends the image file, we can use a specific algorithm to encrypt image. Then client sends the file to the server. After the server receives the file, we will use the same algorithm to decrypt the image. In this case, even if attackers intercept the image file, he still cannot get the real information, thus preventing information leakage.<br><img src="/images/7.png" alt="figure 7"></p>
+<h3 id="1-3-2_Timestamp_Authentication">1.3.2 Timestamp Authentication</h3><p>It is efficient defense against replay attack to add timestamp to the system. To use this approach, we should ensure synchronization between client and server. First, the server generates a dynamic password from time to time. Second, the client sends a request to get the dynamic password. Finally, client sends username and dynamic password to login system. In this case, even if the middle man steal the password, it is only effective in a very short time.<br><img src="/images/8.png" alt="figure 8"></p>
+<h3 id="1-3-3_Challenge-Response_Authentication">1.3.3 Challenge-Response Authentication</h3><p>Challenge-Response Authentication is another effective method to prevent replay attack. The basic model is as follows:</p>
+<ol>
+<li>Client sends a request to login. (We can assume it is ‘GET’ request)</li>
+<li>Server generates a random number K=random (NUM), then return K to Client. Besides, server should save K to the session.</li>
+<li>Client calculates R=Hmac(K, P), then sends the result to the server. In the formula, K represents key (the random number), P represents user password, Hmac() is a Hash Function.</li>
+<li>Server gets the user password from database and does the same calculation R’=hmac() as step 3. Then comparing R’ with R, if R’ equals R, users will login system successfully.</li>
+</ol>
+<p>In this process, the man in the middle can only get K and R, but K is a random number while R is a hash result, the two numbers are both meaningless. Attackers cannot get user password through the two numbers. System security is improved.<br><img src="/images/9.png" alt="figure 9"></p>
+<h2 id="1-4_Fingerprint_Authentication_System_with_Enhanced_Security">1.4 Fingerprint Authentication System with Enhanced Security</h2><p>The paper discusses a fingerprint authentication system with enhanced security. First, we will use the new approach to instead of the traditional approach, we will not use fingerprint sensor to get user fingerprint data. Instead, we use smartphone camera to get the user information. It will be more convenient and low cost. Second, we use Web Service to provide web-based authentication service with enhanced security. We use some methods to improve the system security and prevent network attack. Finally, we will realize a new fingerprint authentication system with convenience, security and low cost.</p>
+<p>The paper will be divided into 7 chapters.<br>Chapter 1 expresses the problems of the existed fingerprints authentication system and gives a new approach to solve the problems.<br>Chapter 2 introduces the related work of fingerprints system and system security.<br>Chapter 3 gives the system architecture to show how it works.<br>Chapter 4 discusses the security strategy to prevent network attack.<br>Chapter 5 discusses fingerprints matcher web service.<br>Chapter 6 I have no idea now.<br>Chapter 7 gives the conclusion.</p>
+	  
+
+	  <div>
+  		<center>
+		  <div class="pagination">
+<ul class="pagination">
+	
+	
+	
+	
+	
+		
+	
+		
+	
+		
+	
+		
+			
+		
+	
+		
+			
+		
+	
+		
+			
+		
+	
+		
+	
+		
+			
+		
+	
+		
+			
+			
+		
+	
+		
+	
+	
+		<li class="prev"><a href="/2015/06/24/4Security-Strategy/" class="alignleft prev"><i class="fa fa-arrow-circle-o-left"></i>prev</a></li>
+	
+	<li><a href="/"><i class="fa fa-archive"></i>Home</a></li>
+	
+		<li class="next disabled"><a>next<i class="fa fa-arrow-circle-o-right"></i></a></li>
+	
+</ul>
+</div>
+
+		</center>
+	  </div>
+	  
+	</div> <!-- col-md-9/col-md-12 -->
+	
+  </div><!-- row -->
+
+	</div>
+  </div>
+  <div class="container-narrow">
+	<footer> <p>
+  &copy; 2015 <a href="http://www.cnblogs.com/Kassadin/" target="_blank">Li Yi</a>
+  
+      . Thanks for <a href="http://zespia.tw/hexo/" target="_blank">Hexo</a> , <a href="http://getbootstrap.com/" target="_blank">Twitter Bootstrap</a> and <a href="http://github.com/wzpan/hexo-theme-wixo/">Wixo</a>.
+</p>
+ </footer>
+  </div> <!-- container-narrow -->
+  
+<a id="gotop" href="#">
+  <span>▲</span>
+</a>
+
+<script src="/js/jquery.imagesloaded.min.js"></script>
+<script src="/js/gallery.js"></script>
+<script src="/js/bootstrap.min.js"></script>
+<script src="/js/jquery.tableofcontents.min.js"></script>
+<script src="/js/tocgenerator.min.js"></script>
+<script src="/js/main.js"></script>
+
+
+
+
+<link rel="stylesheet" href="/fancybox/jquery.fancybox.css" media="screen" type="text/css">
+<script src="/fancybox/jquery.fancybox.pack.js"></script>
+<script type="text/javascript">
+(function($){
+  $('.fancybox').fancybox();
+})(jQuery);
+</script>
+
+
+<!-- mathjax config similar to math.stackexchange -->
+
+<script type="text/x-mathjax-config">
+  MathJax.Hub.Config({
+    tex2jax: {
+      inlineMath: [ ['$','$'], ["\\(","\\)"] ],
+      processEscapes: true
+    }
+  });
+</script>
+
+<script type="text/x-mathjax-config">
+    MathJax.Hub.Config({
+      tex2jax: {
+        skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']
+      }
+    });
+</script>
+
+<script type="text/x-mathjax-config">
+    MathJax.Hub.Queue(function() {
+        var all = MathJax.Hub.getAllJax(), i;
+        for(i=0; i < all.length; i += 1) {
+            all[i].SourceElement().parentNode.className += ' has-jax';
+        }
+    });
+</script>
+
+<script type="text/javascript" src="http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML">
+</script>
+
+
+</body>
+</html>

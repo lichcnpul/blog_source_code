@@ -1,0 +1,195 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+  <meta charset="utf-8">
+  
+  <title>CodeTest | すべてはシュタインズゲートの選択だ</title>
+  <meta name="author" content="Li Yi">
+  
+  <meta name="description" content="参考文献：Hexo在github上构建免费的Web应用
+Javascript12345678910111213141516var mongoose = require(&#39;mongoose&#39;);mongoose.connect(&#39;mongodb://localhost/test&#39;);var Cat =">
+  
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+
+  <meta property="og:title" content="CodeTest"/>
+  <meta property="og:site_name" content="すべてはシュタインズゲートの選択だ"/>
+
+  
+    <meta property="og:image" content="undefined"/>
+  
+
+  
+    <link rel="alternative" href="/atom.xml" title="すべてはシュタインズゲートの選択だ" type="application/atom+xml">
+  
+  
+    <link href="/favicon.png" rel="icon">
+  
+  
+  <link rel="stylesheet" href="/css/bootstrap.min.css" media="screen" type="text/css">
+  <link rel="stylesheet" href="/css/font-awesome.css" media="screen" type="text/css">
+  <link rel="stylesheet" href="/css/style.css" media="screen" type="text/css">
+  <link rel="stylesheet" href="/css/highlight.css" media="screen" type="text/css">
+  <link rel="stylesheet" href="/css/google-fonts.css" media="screen" type="text/css">
+  <link rel="stylesheet" href="/css/responsive.css" media="screen" type="text/css">  
+  <link rel="stylesheet" href="/css/sidenav.css" media="screen" type="text/css">  
+  <!--[if lt IE 9]><script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script><![endif]-->
+
+  <script src="/js/jquery-2.0.3.min.js"></script>
+
+  <!-- analytics -->
+  
+
+</head>
+
+<body id="body" data-spy="scroll" data-target=".toc">
+  <div class="container" id="container">
+	<div class="content">
+	  <div class="page-header">		
+  <h1><a class="brand" href="/">すべてはシュタインズゲートの選択だ</a><span class="split"></span><span class="title">CodeTest</span><span class="date" id="title-date"><i class="fa fa-clock-o"></i> 2015-06-20</span></h1>
+</div>		
+
+<div class="row page">
+  <!-- cols -->	
+  
+  <div class="col-xs-12 col-sm-3 col-md-3 toc"> 
+	<!-- toc -->
+<script type="text/javascript">
+		jQuery(document).ready(function() {
+ 		   generateWikiTOC('.note', '.toc',  2 , 2 );
+		});
+</script>
+  </div><!-- col-md-3 -->
+  
+  
+
+  
+  <div class="col-xs-12 col-sm-9 col-md-9 note">
+	
+
+	  <!-- content -->
+	  <p>参考文献：<a href="http://blog.fens.me/hexo-blog-github/" target="_blank" rel="external">Hexo在github上构建免费的Web应用</a></p>
+<h2 id="Javascript">Javascript</h2><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> mongoose = <span class="built_in">require</span>(<span class="string">'mongoose'</span>);</span><br><span class="line">mongoose.connect(<span class="string">'mongodb://localhost/test'</span>);</span><br><span class="line"></span><br><span class="line"><span class="keyword">var</span> Cat = mongoose.model(<span class="string">'Cat'</span>,&#123;</span><br><span class="line">	name: <span class="built_in">String</span>,</span><br><span class="line">	friends: [<span class="built_in">String</span>],</span><br><span class="line">	age: <span class="built_in">Number</span>,</span><br><span class="line">&#125;);</span><br><span class="line"></span><br><span class="line"><span class="keyword">var</span> kitty = <span class="keyword">new</span> Cat(&#123;name: <span class="string">'Zildjian'</span>, friends: [<span class="string">'tom'</span>,<span class="string">'jerry'</span>]&#125;);</span><br><span class="line">kitty.age = <span class="number">3</span>;</span><br><span class="line"></span><br><span class="line">kitty.save(<span class="function"><span class="keyword">function</span>(<span class="params">err</span>) </span>&#123;</span><br><span class="line">	<span class="keyword">if</span>(err) ;</span><br><span class="line">	<span class="built_in">console</span>.log(<span class="string">'meow'</span>);</span><br><span class="line">&#125;);</span><br></pre></td></tr></table></figure>
+<h2 id="Java">Java</h2><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> javax.jws.WebMethod;</span><br><span class="line"><span class="keyword">import</span> javax.jws.WebService;</span><br><span class="line"><span class="comment">/*</span><br><span class="line"> * SEI;</span><br><span class="line"> */</span></span><br><span class="line"><span class="annotation">@WebService</span></span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">interface</span> <span class="title">HelloWS</span> </span>&#123;</span><br><span class="line"></span><br><span class="line">	<span class="annotation">@WebMethod</span></span><br><span class="line">	<span class="function"><span class="keyword">public</span> String <span class="title">sayHello</span><span class="params">(String name)</span></span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h2 id="Ruby">Ruby</h2><figure class="highlight ruby"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br></pre></td><td class="code"><pre><span class="line"><span class="variable">@numtocodetable</span> = <span class="constant">Hash</span>.[](</span><br><span class="line">  <span class="string">"21"</span> =&gt; <span class="string">"q"</span>,  <span class="string">"22"</span> =&gt; <span class="string">"w"</span>,  <span class="string">"23"</span> =&gt; <span class="string">"e"</span>,  <span class="string">"31"</span> =&gt; <span class="string">"r"</span>,  <span class="string">"32"</span> =&gt; <span class="string">"t"</span>,  <span class="string">"33"</span> =&gt; <span class="string">"y"</span>,</span><br><span class="line">  <span class="string">"41"</span> =&gt; <span class="string">"u"</span>,  <span class="string">"42"</span> =&gt; <span class="string">"i"</span>,  <span class="string">"43"</span> =&gt; <span class="string">"o"</span>,  <span class="string">"51"</span> =&gt; <span class="string">"p"</span>,  <span class="string">"52"</span> =&gt; <span class="string">"a"</span>,  <span class="string">"53"</span> =&gt; <span class="string">"s"</span>,</span><br><span class="line">  <span class="string">"61"</span> =&gt; <span class="string">"d"</span>,  <span class="string">"62"</span> =&gt; <span class="string">"f"</span>,  <span class="string">"63"</span> =&gt; <span class="string">"g"</span>,  <span class="string">"71"</span> =&gt; <span class="string">"h"</span>,  <span class="string">"72"</span> =&gt; <span class="string">"j"</span>,  <span class="string">"73"</span> =&gt; <span class="string">"k"</span>,</span><br><span class="line">  <span class="string">"74"</span> =&gt; <span class="string">"l"</span>,  <span class="string">"81"</span> =&gt; <span class="string">"z"</span>,  <span class="string">"82"</span> =&gt; <span class="string">"x"</span>,  <span class="string">"83"</span> =&gt; <span class="string">"c"</span>,  <span class="string">"91"</span> =&gt; <span class="string">"v"</span>,  <span class="string">"92"</span> =&gt; <span class="string">"b"</span>,</span><br><span class="line">  <span class="string">"93"</span> =&gt; <span class="string">"n"</span>,  <span class="string">"94"</span> =&gt; <span class="string">"m"</span></span><br><span class="line">)</span><br><span class="line"></span><br><span class="line">  <span class="variable">@codetonumtable</span> = <span class="constant">Hash</span>.[](</span><br><span class="line">  <span class="string">"q"</span> =&gt; <span class="string">"21"</span>, <span class="string">"w"</span> =&gt; <span class="string">"22"</span>, <span class="string">"e"</span> =&gt; <span class="string">"23"</span>, <span class="string">"r"</span> =&gt; <span class="string">"31"</span>, <span class="string">"t"</span> =&gt; <span class="string">"32"</span>, <span class="string">"y"</span> =&gt; <span class="string">"33"</span>,</span><br><span class="line">  <span class="string">"u"</span> =&gt; <span class="string">"41"</span>, <span class="string">"i"</span> =&gt; <span class="string">"42"</span>, <span class="string">"o"</span> =&gt; <span class="string">"43"</span>, <span class="string">"p"</span> =&gt; <span class="string">"51"</span>, <span class="string">"a"</span> =&gt; <span class="string">"52"</span>, <span class="string">"s"</span> =&gt; <span class="string">"53"</span>,</span><br><span class="line">  <span class="string">"d"</span> =&gt; <span class="string">"61"</span>, <span class="string">"f"</span> =&gt; <span class="string">"62"</span>, <span class="string">"g"</span> =&gt; <span class="string">"63"</span>, <span class="string">"h"</span> =&gt; <span class="string">"71"</span>, <span class="string">"j"</span> =&gt; <span class="string">"72"</span>, <span class="string">"k"</span> =&gt; <span class="string">"73"</span>,</span><br><span class="line">  <span class="string">"l"</span> =&gt; <span class="string">"74"</span>, <span class="string">"z"</span> =&gt; <span class="string">"81"</span>, <span class="string">"x"</span> =&gt; <span class="string">"82"</span>, <span class="string">"c"</span> =&gt; <span class="string">"83"</span>, <span class="string">"v"</span> =&gt; <span class="string">"91"</span>, <span class="string">"b"</span> =&gt; <span class="string">"92"</span>,</span><br><span class="line">  <span class="string">"n"</span> =&gt; <span class="string">"93"</span>, <span class="string">"m"</span> =&gt; <span class="string">"94"</span></span><br><span class="line">)</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">def</span> </span><span class="keyword">self</span>.codetonum(code)</span><br><span class="line">    num = <span class="string">""</span></span><br><span class="line">    codeinput = code</span><br><span class="line">    codeinput.split(<span class="regexp">//</span>).each <span class="keyword">do</span> |item|</span><br><span class="line">      num = num + <span class="variable">@codetonumtable</span>[item]</span><br><span class="line">    <span class="keyword">end</span></span><br><span class="line">    <span class="keyword">return</span> num</span><br><span class="line"><span class="keyword">end</span></span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">def</span> </span><span class="keyword">self</span>.numtocode(num)</span><br><span class="line">    p = <span class="string">""</span></span><br><span class="line">    input = num</span><br><span class="line">    str = input.scan(<span class="regexp">/[0-9]&#123;2&#125;/</span>)</span><br><span class="line">    str.each <span class="keyword">do</span> |item|</span><br><span class="line">      p = p + <span class="variable">@numtocodetable</span>[item]</span><br><span class="line">    <span class="keyword">end</span></span><br><span class="line">    <span class="keyword">return</span> p</span><br><span class="line"><span class="keyword">end</span></span><br></pre></td></tr></table></figure>
+<h2 id="Python">Python</h2><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">print(<span class="string">'hello world'</span>)</span><br></pre></td></tr></table></figure>
+<h2 id="CSharp">CSharp</h2><figure class="highlight csharp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">using</span> System;</span><br><span class="line"></span><br><span class="line"><span class="keyword">namespace</span> <span class="title">HelloWorld</span></span><br><span class="line">&#123;</span><br><span class="line">	<span class="keyword">class</span> <span class="title">MainClass</span></span><br><span class="line">	&#123;</span><br><span class="line">		<span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">Main</span> (<span class="params"><span class="keyword">string</span>[] args</span>)</span><br><span class="line">		</span>&#123;</span><br><span class="line">			Console.WriteLine (<span class="string">"Hello World!"</span>);</span><br><span class="line">		&#125;</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+	  
+
+	  <div>
+  		<center>
+		  <div class="pagination">
+<ul class="pagination">
+	
+	
+	
+	
+	
+		
+	
+		
+	
+		
+	
+		
+	
+		
+	
+		
+	
+		
+	
+		
+	
+		
+	
+		
+			
+			
+		
+	
+	
+		<li class="prev disabled"><a><i class="fa fa-arrow-circle-o-left"></i>prev</a></li>
+	
+	<li><a href="/"><i class="fa fa-archive"></i>Home</a></li>
+	
+		<li class="next disabled"><a>next<i class="fa fa-arrow-circle-o-right"></i></a></li>
+	
+</ul>
+</div>
+
+		</center>
+	  </div>
+	  
+	</div> <!-- col-md-9/col-md-12 -->
+	
+  </div><!-- row -->
+
+	</div>
+  </div>
+  <div class="container-narrow">
+	<footer> <p>
+  &copy; 2015 <a href="http://www.cnblogs.com/Kassadin/" target="_blank">Li Yi</a>
+  
+      . Thanks for <a href="http://zespia.tw/hexo/" target="_blank">Hexo</a> , <a href="http://getbootstrap.com/" target="_blank">Twitter Bootstrap</a> and <a href="http://github.com/wzpan/hexo-theme-wixo/">Wixo</a>.
+</p>
+ </footer>
+  </div> <!-- container-narrow -->
+  
+<a id="gotop" href="#">
+  <span>▲</span>
+</a>
+
+<script src="/js/jquery.imagesloaded.min.js"></script>
+<script src="/js/gallery.js"></script>
+<script src="/js/bootstrap.min.js"></script>
+<script src="/js/jquery.tableofcontents.min.js"></script>
+<script src="/js/tocgenerator.min.js"></script>
+<script src="/js/main.js"></script>
+
+
+
+
+<link rel="stylesheet" href="/fancybox/jquery.fancybox.css" media="screen" type="text/css">
+<script src="/fancybox/jquery.fancybox.pack.js"></script>
+<script type="text/javascript">
+(function($){
+  $('.fancybox').fancybox();
+})(jQuery);
+</script>
+
+
+<!-- mathjax config similar to math.stackexchange -->
+
+<script type="text/x-mathjax-config">
+  MathJax.Hub.Config({
+    tex2jax: {
+      inlineMath: [ ['$','$'], ["\\(","\\)"] ],
+      processEscapes: true
+    }
+  });
+</script>
+
+<script type="text/x-mathjax-config">
+    MathJax.Hub.Config({
+      tex2jax: {
+        skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']
+      }
+    });
+</script>
+
+<script type="text/x-mathjax-config">
+    MathJax.Hub.Queue(function() {
+        var all = MathJax.Hub.getAllJax(), i;
+        for(i=0; i < all.length; i += 1) {
+            all[i].SourceElement().parentNode.className += ' has-jax';
+        }
+    });
+</script>
+
+<script type="text/javascript" src="http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML">
+</script>
+
+
+</body>
+</html>

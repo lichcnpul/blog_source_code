@@ -1,0 +1,232 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+  <meta charset="utf-8">
+  
+  <title>thesis | すべてはシュタインズゲートの選択だ</title>
+  <meta name="author" content="Li Yi">
+  
+  <meta name="description" content="Network-based Fingerprint Authentication System Using a Mobile DeviceAbstract:Present fingerprint system has problems in security, usability and cost.">
+  
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+
+  <meta property="og:title" content="thesis"/>
+  <meta property="og:site_name" content="すべてはシュタインズゲートの選択だ"/>
+
+  
+    <meta property="og:image" content="undefined"/>
+  
+
+  
+    <link rel="alternative" href="/atom.xml" title="すべてはシュタインズゲートの選択だ" type="application/atom+xml">
+  
+  
+    <link href="/favicon.png" rel="icon">
+  
+  
+  <link rel="stylesheet" href="/css/bootstrap.min.css" media="screen" type="text/css">
+  <link rel="stylesheet" href="/css/font-awesome.css" media="screen" type="text/css">
+  <link rel="stylesheet" href="/css/style.css" media="screen" type="text/css">
+  <link rel="stylesheet" href="/css/highlight.css" media="screen" type="text/css">
+  <link rel="stylesheet" href="/css/google-fonts.css" media="screen" type="text/css">
+  <link rel="stylesheet" href="/css/responsive.css" media="screen" type="text/css">  
+  <link rel="stylesheet" href="/css/sidenav.css" media="screen" type="text/css">  
+  <!--[if lt IE 9]><script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script><![endif]-->
+
+  <script src="/js/jquery-2.0.3.min.js"></script>
+
+  <!-- analytics -->
+  
+
+</head>
+
+<body id="body" data-spy="scroll" data-target=".toc">
+  <div class="container" id="container">
+	<div class="content">
+	  <div class="page-header">		
+  <h1><a class="brand" href="/">すべてはシュタインズゲートの選択だ</a><span class="split"></span><span class="title">thesis</span><span class="date" id="title-date"><i class="fa fa-clock-o"></i> 2015-07-01</span></h1>
+</div>		
+
+<div class="row page">
+  <!-- cols -->	
+  
+  <div class="col-xs-12 col-sm-3 col-md-3 toc"> 
+	<!-- toc -->
+<script type="text/javascript">
+		jQuery(document).ready(function() {
+ 		   generateWikiTOC('.note', '.toc',  2 , 2 );
+		});
+</script>
+  </div><!-- col-md-3 -->
+  
+  
+
+  
+  <div class="col-xs-12 col-sm-9 col-md-9 note">
+	
+
+	  <!-- content -->
+	  <h1 id="Network-based_Fingerprint_Authentication_System_Using_a_Mobile_Device">Network-based Fingerprint Authentication System Using a Mobile Device</h1><h2 id="Abstract:">Abstract:</h2><p>Present fingerprint system has problems in security, usability and cost. In this case, we propose a touch-less fingerprint authentication method.  Use mobile device’s built-in camera to capture fingerprint image, and then send it to the server to complete the identity authentication work. Based on this method, the system comprises capture, preprocessing, matching stages and is implemented in a prototype as application for the Android OS. The experimental results show that our method is feasible and lets off some potential problems in the touch-based fingerprint technology.</p>
+<h2 id="Key_words:">Key words:</h2><p><em>Fingerprint authentication</em>, <em>touch-less</em>, <em>network-based</em>, <em>mobile device</em></p>
+<h2 id="1_Introduction">1 Introduction</h2><p>More than a century has passed since the Home Ministry Office, UK, accepted that no two individuals have the same fingerprints and then industriously practiced the idea for solving crimes [1]. Nowadays, due to increasing concerns about security and identity fraud have created a growing need for fingerprint for person recognition, fingerprint authentication is not only needed in forensic applications, but also in a large number of non-forensic applications. The present fingerprint authentication systems are generally called Automatic Fingerprint Identification Systems (AFIS). AFIS accept live-scan digital images acquired with an electronic fingerprint scanner where the finger surface is directly sensed.</p>
+<p>However, the seems-good system has the potential problems in security, usability and cost. For example, an e-payment in a convenient store, a usual procedure is (1) put a finger on the scanner for ensuring (2) the POS deals with obtained fingerprint according to the local database (3) if the fingerprint is matched, e-payment is completed. In this process, security problems happens, which fingerprint left on the reader may be duplicated by others and applications may leak fingerprint information. In usability aspect, fingerprint system (FP System) is wired and bulky. The other problem is FP system equipment is expensive and maintenance expense is cost, for instance software updating and hardware upgrading both cost money.</p>
+<p>Due to the case above, this paper proposes a network-based finger authentication using a camera. This method is that user uses mobile device’s built-in camera to capture fingerprint (FP) image, and send preprocessed FP image to the server through Internet, then the server send back feedback after matches this FP image with initial fingerprint stored in database. The client reacts according to the feedback.</p>
+<p>Allowing for smartphone’s some advantages:  (1) the build-in camera has zooming, auto-focusing and high resolution that is suitable to capture high quality images (2)affordable cost [2] (3)the enough computational capacities to process the photos and execute algorithms, we opted for the smartphone as our experiment tool.  There are no extra devices needed to perform the proposed solution. The capture process is touch-less, so no latent fingerprint is left. In addition, sending FP and receiving feedback is wireless, just through the Internet, hence, it is convenient.  Compared with present AFIS, our method is much safer, stronger usability and less cost.</p>
+<p>The rest of the paper is organized as follows. Section 2 will talk about related works in the touch-less finger recognition. Section 3 will discuss the challenges of fingerprint image authentication. Section 4 will talk about procedure and detailed algorithm design. Section 5 will show the basic architecture of the system. Section 6 will show experiment results. Section 7 is discussion. Section 8 is the conclusion.</p>
+<h2 id="2_Background">2 Background</h2><h3 id="2-1_Biometrics_System_Model">2.1 Biometrics System Model</h3><p>Biometric systems generally comprise three basic components [3]:</p>
+<ul>
+<li>An automated mechanism scans and captures a digital or analogue image of a living individual’s characteristics.</li>
+<li>Another mechanism handles compression, processing, storage and comparison of the collected data with the stored data.</li>
+<li>A third component interfaces with the application system to which the user is attempting to gain access.</li>
+</ul>
+<p>Obviously, the configuration of such a system may be altered to suit a particular situation. However, the majority of biometric control systems follow this simple model.</p>
+<p>It should be noted that there is one crucial step required in setting up a biometric system: enrollment. The only way to gain access to a biometrical controlled system is to enroll.</p>
+<p>Enrollment is required to generate a reference template. The methods of enrollment vary according to the device used but usually involve scanning the required biometric data a number of times to gain an accurate measurement. A template is then created and linked to the user’s identity. This template provides the reference for comparison when access attempts are made.</p>
+<h3 id="2-2_Overview_of_current_AFIS">2.2 Overview of current AFIS</h3><p>Generally, a fingerprint system designer make sure that the system makes the correct trade-offs. These trade-offs may include recognition accuracy, response time, system integrity, complexity, cost (component price as well as integration and support costs), privacy, government standards, liveness detection, ease of integration, durability, modality of usage, etc. A good fingerprint recognition system should provide a good balance of security, privacy, convenience, and accountability.</p>
+<p>Based on the model above, current AFIS is consists of sensors, fingerprint processing and matching hardware and software. Because of fingerprint recognition’s advantages, AFIS are now being increasingly used in many fields.<br><img src="/images/thesis2/image1.png" alt="Figure 1"><br>Figure 1 shows various applications involving electronic access or transaction that require reliable automatic user recognition.</p>
+<h2 id="2-3_Fingerprint_authentication_in_Electronic_Payment">2.3 Fingerprint authentication in Electronic Payment</h2><p>An application in E-payment using fingerprint authentication is called fingerprint payment system. Fingerprint payment system allows the consumer to pay with the touch of a finger on a fingerprint scanner. Biometric payment providers require completion of a pre-enrollment process in which index fingers are scanned and address and banking information is recorded in an account database [12]. This transactions process reportedly takes a few seconds. The service was launched in United States in 2005 and spread swiftly into worldwide. For example, Walmart, 7-11 and Taobao all support the service.<br><img src="/images/thesis2/image2.png" alt="Figure 2"><br>Figure 2 shows the workflow and its problems.</p>
+<h2 id="2-4_Disadvantages_of_touch_based_sensors">2.4 Disadvantages of touch based sensors</h2><p>The sensor is the most critical component of the entire fingerprint recognition process. Recognition is highly dependent on the quality of the captured fingerprint image as in less noise, and better image. The core technology used to manufacture the sensors can introduce noise and errors on the captured fingerprint image, influencing the recognition to such a negative extreme that you could be continuously rejected by the system (false rejection) or somebody else could be granted access to the system instead of you (false acceptance).</p>
+<p>Current fingerprint capture method is touch-based. In order to acquire fingerprint images, the touch-based fingerprint sensors require the user to place his finger on the flat window of the sensor. Because the skin of the finger is not flat, the user must apply enough pressure on the window to obtain sufficient size and achieve good image quality. However, this pressure produces unavoidable physical distortion in arbitrary directions, which is represented differently throughout every area of the same fingerprint image [4] .During the touch, the fingerprint can be acquired with different technologies. There are two main types of touch-based technologies: optical sensors and IC’s or CMOS sensors. Optical sensors are more accurate than IC’s, but they have the similar problems of above.<br><img src="/images/thesis2/image3.png" alt="Figure 3"><br>Figure 3 shows the images from touch based sensor using different impression strength.</p>
+<p>As the sensor’s protecting layer is thin, its continuous usage will destroy its surface, making the device useless. In everyday life, things are even worst. You usually use your hands for different tasks and you usually touch different types of materials. Small portions of the objects you touch accumulate on the skin of your finger. When you touch the fingerprint sensor, you deposit these materials on its surface. Additionally, your skin produces sweat (a combination of water and different types of salts) and the sebum (an oily/waxy substance our body produces). When you touch the surface of a fingerprint sensor, the mix of the sweat, sebum and any substance accumulate during your daily activities become a killer combination for the sensor surface that speeds up the destruction of its surface. Fingerprint sensor manufacturers never achieved great success in this issue.</p>
+<p>Meanwhile, after pressing on the surface, a latent fingerprint will be left on it. A latent fingerprint refers to the trail of fingerprint on the surface of the sensor. This can lead to fraudulent use, such as the faking of fingerprints, as well as hygienic problems.<br><img src="/images/thesis2/image4.png" alt="Figure 4"><br>Figure 4 shows the latent fingerprint on a sensor [1].</p>
+<p>In addition, a set of fingerprint recognition system equipment is expensive and its maintenance expense is cost, for instance software updating and hardware upgrading both cost money.</p>
+<p>As shown above in Figure 2, current fingerprint authentication system based on touched sensors almost have similar problems.</p>
+<h2 id="3_Related_Work">3 Related Work</h2><p>To date, several approaches for touch-less fingerprint recognition system have been reported. Application of fingerprint verification technology to mobile handsets is discussed in [5] and a novel method for fingerprint enhancement has been developed for that particular design[5, 6]. In [11] , the authors proposed a preprocessing technique which included low pass filtering, segmentation and Gabor enhancement for their own-designed touch-less sensor. Later,[7] resolved the 3D to 2D image mapping problem that was introduced in [11] by a strong view difference image rejection method. Preprocessing of fingerprint images captured with mobile camera was suggested by [8]. Most lately, [9] introduced a new touch-less device - The Surround Imager, which can acquire 3D rolled-equivalent fingerprints. To make 3D touch-less fingerprints interoperable with the current AFIS system, [10] proposed an unwrapping algorithm that unwraps the 3D touch-less fingerprint images into 2D representations that are comparable with the legacy rolled fingerprints.</p>
+<h2 id="4_Proposal_Solution">4 Proposal Solution</h2><p>To solve these problems, this paper proposes a network-based finger authentication using mobile device. This method is that user uses mobile device’s built-in camera to capture fingerprint (FP) image, and send preprocessed FP image to the server through Internet, then the server send back feedback after matches this FP image with initial fingerprint stored in database. The client reacts according to the feedback.</p>
+<p>The capture process with fingerprint is performed touch-less, just use smartphone camera. Hence, no latent fingerprint is left, privacy leak and hygienic problems won’t be worried any more.</p>
+<p>The other advantage of the touch-less method compared to the touch-based ones is that, since the finger does not need to touch any rigid surfaces, the skin does not deform and the image captures very rich details that can make the recognition more accurate.</p>
+<p>In addition, network-based system make fingerprint recognition work be done anywhere and anytime. It is much more convenient than the way that you have to go to somewhere and use certain sensor.</p>
+<p>At last, current smartphone is good enough to capture the finger in sufficient quality and process the photos and execute algorithms for fingerprint recognition. Apart of this, there are no extra devices. And a smartphone is durable to use, so maintenance charge is small.<br>In general, out proposal solution will be safer, convenient and cost less.<br><img src="/images/thesis2/image5.png" alt="Figure 5"><br>Figure 5 shows our proposed solution and advantages.</p>
+<h2 id="5_Method">5 Method</h2><p>The proposed method includes Image obtain, Image preprocessing, Image Enhancement, Feature Extraction and Matching Stages.</p>
+<h3 id="5-1_Image_Obtain">5.1 Image Obtain</h3><p>This part contains capture process and quality assurance.<br><strong>Capture Process</strong><br>The intention of the fingerprint recognition is that for authentication the user simply positions his finger close in front of the camera in order to capture a biometric sample. The focus is set to “macro mode”, such that the camera uses the closest possible focus. The LED is switched on during the capture process. The LED spotlights the finger such that it appears brighter than the background. This simplifies the segmentation of the finger against the background. Another advantage is the reduced camera noise and risk of blurring caused from hand-motion due the high brightness from the LED. The LED also stabilizes the lighting conditions and creates more homogeneous illumination.<br><strong>Quality Assurance</strong><br>The algorithms for finger detection and quality assurance check continuously the preview images of the camera after the capture process has been initiated by the user. The results of the algorithms are calculated in real-time and are displayed on the graphical user interface of the developed prototype. A photo is automatically taken when all criteria (see Section 7) for the fingerprint recognition are fulfilled.</p>
+<p>Quality Estimation: Based on the gradient distribution of an ideal fingerprint, calculate to estimate subject image’s coherence and symmetrization.</p>
+<h3 id="5-2_Image_Preprocessing">5.2 Image Preprocessing</h3><p>Skin Color Detection<br>Ostu Adaptive Thresholding<br>Morphological Processing<br>Normalization</p>
+<h3 id="5-3_Image_Enhancement">5.3 Image Enhancement</h3><p>Median Filtering<br>Bicubic Interpolation<br>Histogram Equalization<br>Gaussian Filtering<br>Core Point Detection: the Poincare index<br>Cropping 353*392 size</p>
+<h3 id="5-4_Feature_Extraction">5.4 Feature Extraction</h3><p>AFIS Open Source Engine</p>
+<h3 id="5-5_Matching">5.5 Matching</h3><p>Using AFIS Open Source Engine to get two compared fingerprints score.</p>
+<h2 id="6_Results">6 Results</h2><p>We chose two group fingerprint sample. Each of them contains 30 finger images and then we compared the two group samples with corresponding database fingerprints. Through analyzing the resulting score matrix, the first group: false reject number is 8, FRR is 0.888%, false accept number is 0, FAR is 0%; the second group:  false reject number is 1, FRR is 0.111%, false accept number is 2, FAR is 0.222%</p>
+<h2 id="7_Discussion">7 Discussion</h2><p>The experiment  results has been shown that fingerprint recognition on smartphones is possible. A capture process for fingerprint in combination with efficient processing algorithms was developed. The implemented algorithms ensure the suitability of the captured photos for fingerprint recognition.</p>
+<h2 id="Reference">Reference</h2><p>[1] D. Maltoni, D. Maio, A. K.Jain, and S. Prabhakar, Handbook of Fingerprint Recognition, Springer- Verlag, New York, 2003.<br>[2] B.Y. Hiew, Andrew B.J. Teoh, Member, IEEE and Y.H. Pang, Digital Camera based Fingerprint Recognition, Proceedings of the 2007 IEEE International Conference on Telecommunications and Malaysia International Conference on Communications, 14-17 May 2007, Penang, Malaysia.<br>[3] Rodger Jamieson, Ph.D., CA, Greg Stephens and Santhosh Kumar, Fingerprint Identification: An Aid to the Authentication Process, 2005 Information Systems Audit and Control Association.<br>[4] Jainam Shah*, Ujash Poshiya, Touchless Fingerprint Reorganization, Vishwakarma Government Engineering College, Chandkheda Gujarat, India.<br>[5] M. Hashimoto, S. Tanaka, and J. Thornton, “Biometrics in Mobile Handsets”, Technical Report, Mitsubishi Electric Corporation, June 2005.<br>[6] T. Nakamura, H. Fujiwara, M. Hirooka, and K. Sumi, “Fingerprint Enhancement Using a Parallel Ridge Filter”, 17th International Conference on Pattern Recognition 2004, Cambridge, United Kingdom, 2004.<br>[7] C. Lee, S. Lee, and J. Kim, “A Study of Touchless Fingerprint Recognition System”, Joint IAPR International Workshops, SSPR 2006 and SPR 2006, Hong Kong, China, 2006.<br>[8] C.H. Lee, S.H. Lee, J.H. Kim, and S.J. Kim, “Preprocessing of a Fingerprint Image Captured with a Mobile Camera “, Advances in Biometrics: International Conference, Hong Kong, China, 2006.<br>[9] G. Parziale and E. Diaz-Santana, “The Surround Imager: A Multi-camera Touchless Device to Acquire 3D Rolled-Equivalent Fingerprints”, IAPR International Conference on Biometrics, Hong Kong, China, 2006.<br>[10] Y. Chen, G. Parziale, E. Diaz-Santana, and A. Jain, “3D Touchless Fingerprints: Compatibility with Legacy Rolled Images”, Proceeding of Biometric Symposium, Biometric Consortium Conference, Baltimore,MD, U.S.A, 2006.<br>[11] Y. Song, C. Lee, and J. Kim, “A New Scheme for Touchless Fingerprint Recognition System”, International Symposium on Intelligent Signal Processing and Communication Systems, Korea, 2004<br>[12] Dileep Kumar, Yeonseung Ryu, A Brief Introduction of Biometrics and Fingerprint Payment Technology , International Journal of Advanced Science and Technology Vol. 4, March, 2009</p>
+	  
+
+	  <div>
+  		<center>
+		  <div class="pagination">
+<ul class="pagination">
+	
+	
+	
+	
+	
+		
+	
+		
+			
+			
+		
+	
+		
+			
+			
+		
+	
+		
+	
+		
+	
+		
+	
+		
+	
+		
+	
+		
+	
+		
+	
+	
+		<li class="prev disabled"><a><i class="fa fa-arrow-circle-o-left"></i>prev</a></li>
+	
+	<li><a href="/"><i class="fa fa-archive"></i>Home</a></li>
+	
+		<li class="next disabled"><a>next<i class="fa fa-arrow-circle-o-right"></i></a></li>
+	
+</ul>
+</div>
+
+		</center>
+	  </div>
+	  
+	</div> <!-- col-md-9/col-md-12 -->
+	
+  </div><!-- row -->
+
+	</div>
+  </div>
+  <div class="container-narrow">
+	<footer> <p>
+  &copy; 2015 <a href="http://www.cnblogs.com/Kassadin/" target="_blank">Li Yi</a>
+  
+      . Thanks for <a href="http://zespia.tw/hexo/" target="_blank">Hexo</a> , <a href="http://getbootstrap.com/" target="_blank">Twitter Bootstrap</a> and <a href="http://github.com/wzpan/hexo-theme-wixo/">Wixo</a>.
+</p>
+ </footer>
+  </div> <!-- container-narrow -->
+  
+<a id="gotop" href="#">
+  <span>▲</span>
+</a>
+
+<script src="/js/jquery.imagesloaded.min.js"></script>
+<script src="/js/gallery.js"></script>
+<script src="/js/bootstrap.min.js"></script>
+<script src="/js/jquery.tableofcontents.min.js"></script>
+<script src="/js/tocgenerator.min.js"></script>
+<script src="/js/main.js"></script>
+
+
+
+
+<link rel="stylesheet" href="/fancybox/jquery.fancybox.css" media="screen" type="text/css">
+<script src="/fancybox/jquery.fancybox.pack.js"></script>
+<script type="text/javascript">
+(function($){
+  $('.fancybox').fancybox();
+})(jQuery);
+</script>
+
+
+<!-- mathjax config similar to math.stackexchange -->
+
+<script type="text/x-mathjax-config">
+  MathJax.Hub.Config({
+    tex2jax: {
+      inlineMath: [ ['$','$'], ["\\(","\\)"] ],
+      processEscapes: true
+    }
+  });
+</script>
+
+<script type="text/x-mathjax-config">
+    MathJax.Hub.Config({
+      tex2jax: {
+        skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']
+      }
+    });
+</script>
+
+<script type="text/x-mathjax-config">
+    MathJax.Hub.Queue(function() {
+        var all = MathJax.Hub.getAllJax(), i;
+        for(i=0; i < all.length; i += 1) {
+            all[i].SourceElement().parentNode.className += ' has-jax';
+        }
+    });
+</script>
+
+<script type="text/javascript" src="http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML">
+</script>
+
+
+</body>
+</html>

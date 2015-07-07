@@ -1,0 +1,221 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+  <meta charset="utf-8">
+  
+  <title>4. Security Strategy | すべてはシュタインズゲートの選択だ</title>
+  <meta name="author" content="Li Yi">
+  
+  <meta name="description" content="Chapter 4 Security StrategyThis chapter discuss the security strategy in the fingerprint authentication system. First, we will talk about security thr">
+  
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+
+  <meta property="og:title" content="4. Security Strategy"/>
+  <meta property="og:site_name" content="すべてはシュタインズゲートの選択だ"/>
+
+  
+    <meta property="og:image" content="undefined"/>
+  
+
+  
+    <link rel="alternative" href="/atom.xml" title="すべてはシュタインズゲートの選択だ" type="application/atom+xml">
+  
+  
+    <link href="/favicon.png" rel="icon">
+  
+  
+  <link rel="stylesheet" href="/css/bootstrap.min.css" media="screen" type="text/css">
+  <link rel="stylesheet" href="/css/font-awesome.css" media="screen" type="text/css">
+  <link rel="stylesheet" href="/css/style.css" media="screen" type="text/css">
+  <link rel="stylesheet" href="/css/highlight.css" media="screen" type="text/css">
+  <link rel="stylesheet" href="/css/google-fonts.css" media="screen" type="text/css">
+  <link rel="stylesheet" href="/css/responsive.css" media="screen" type="text/css">  
+  <link rel="stylesheet" href="/css/sidenav.css" media="screen" type="text/css">  
+  <!--[if lt IE 9]><script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script><![endif]-->
+
+  <script src="/js/jquery-2.0.3.min.js"></script>
+
+  <!-- analytics -->
+  
+
+</head>
+
+<body id="body" data-spy="scroll" data-target=".toc">
+  <div class="container" id="container">
+	<div class="content">
+	  <div class="page-header">		
+  <h1><a class="brand" href="/">すべてはシュタインズゲートの選択だ</a><span class="split"></span><span class="title">4. Security Strategy</span><span class="date" id="title-date"><i class="fa fa-clock-o"></i> 2015-06-24</span></h1>
+</div>		
+
+<div class="row page">
+  <!-- cols -->	
+  
+  <div class="col-xs-12 col-sm-3 col-md-3 toc"> 
+	<!-- toc -->
+<script type="text/javascript">
+		jQuery(document).ready(function() {
+ 		   generateWikiTOC('.note', '.toc',  2 , 2 );
+		});
+</script>
+  </div><!-- col-md-3 -->
+  
+  
+
+  
+  <div class="col-xs-12 col-sm-9 col-md-9 note">
+	
+
+	  <!-- content -->
+	  <h1 id="Chapter_4_Security_Strategy">Chapter 4 Security Strategy</h1><p>This chapter discuss the security strategy in the fingerprint authentication system. First, we will talk about security threat briefly; Second, we discuss the traditional approach to enhance security; Third, we give a fingerprint watermark approach to solve the security problems. We will discuss reversible watermarking technology in this part.</p>
+<h2 id="4-1_Security_Threat_and_Common_Approach">4.1 Security Threat and Common Approach</h2><h3 id="4-1-1_Security_Threat">4.1.1 Security Threat</h3><p>As we have talked in chapter 1, there are some types of internet attack. One is to <strong>intercept information</strong>. The purpose of intercepting information is to steal data content itself. Another one is to <strong>replay attack</strong>. Replay attack is a form of network attack in which a valid data transmission is maliciously or fraudulently repeated or delayed. In our system, attackers will try to intercept user’s packages which contain fingerprint images. This is a kind of intercept attack. In this case, user information will be leaked. In addition, the attackers intercept data packages then they can resend these data packages to the server regardless of whether the data is encrypted. This is a kind of replay attack. Attackers use replay attack to realize the purpose of spoofing server. Then the server will consider the attacker to be the original user.</p>
+<p>The fingerprint authentication system should be security. We try to design some security subsystem to enhance the system security. Then the system should be prevent information interception and replay attack.</p>
+<h3 id="4-1-2_Common_Approach">4.1.2 Common Approach</h3><p>File encryption and digital signature is a common approach to enhance system security.</p>
+<ul>
+<li>File encryption : Prevent information leaks.</li>
+<li>Digital signature : Ensure the message sent by the original sender.</li>
+</ul>
+<p>File encryption： The basic process flow of file encryption is to encode the original file by an algorithm, making it unreadable(commonly referred to as “ciphertext”). The original file cannot be displayed without <strong>key</strong>. By this way we can prevent data from being illegally stolen. The reverse process is called decryption. such as: <a href="http://blog.csdn.net/stpeace/article/details/8315772" target="_blank" rel="external">Algorithm 1</a> and <a href="http://wenku.baidu.com/link?url=Szecji7gvHr35DDq2ltqNqa4aYdajxnfNinz8WA3_4WWVXKHgj6IFUvjTgY_V-w9eqcz4YppASDBfejSm0cIMGMZA62YlXNME9e2ZfxwVoK" target="_blank" rel="external">Algorithm 2</a></p>
+<p>Digital signature: A digital signature is a mathematical technique used to validate the authenticity and integrity of a message, software or digital document. see <a href="http://searchsecurity.techtarget.com/definition/digital-signature" target="_blank" rel="external">searchsecurity</a>. The basic flow of digital signature is like this:<br><img src="/images/thesis/1.png" alt="figure 1"><br>From this diagram, we can know how digital-signature works. First, the data sender uses his private key to encode the information he prepared to send, then he gets a signed message. Second, he send the signed message to the receiver. The receiver gets the signed message and decodes the message by the sender’s public key. Then the receiver gets the decrypted hash. If the decrypted hash matches a second computed hash of the same data, it proves that the data hasn’t changed since it was signed. Otherwise, it proves that the data has been changed by attackers since it was signed.</p>
+<h3 id="4-1-3_New_Approach">4.1.3 New Approach</h3><p>The traditional approach is good enough to enhance system security and prevent internet attack. However, there are still some disadvantages to apply it to our fingerprint system.</p>
+<ol>
+<li><strong>Complex</strong>. Digital-signature need to be controlled in a complex architecture. Besides, we need to build two separate subsystems, one is for file encryption, the other one is for digital signature. It will be more complex.</li>
+<li><strong>Common Approach</strong>. It is a common approach to enhance system security. It does not take into account the characteristics of the fingerprint image.</li>
+</ol>
+<p>In order to overcome the two drawbacks, we try to propose a new approach. The new approach is a kind of reversible digital watermark technology and it combine file encryption with authentication. We will discuss the detail in 4.3 Solution and 4.4 Algorithm.</p>
+<h2 id="4-2_Architecture">4.2 Architecture</h2><p>Waiting to write …</p>
+<h2 id="4-3_Solution">4.3 Solution</h2><p>Waiting to write …</p>
+<h2 id="4-4_Algorithm">4.4 Algorithm</h2><p>Waiting to write …</p>
+<h3 id="Step1:_Read_and_display">Step1: Read and display</h3><p>Display the QrCode image and fingerprint image. use fingerprint image as watermark.<br><figure class="highlight matlab"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line">clear;</span><br><span class="line">clc;</span><br><span class="line"></span><br><span class="line"><span class="comment">%= Read the QRCode and FP watermarkImage</span></span><br><span class="line">qrImage = imread(<span class="string">'qrImage.png'</span>);</span><br><span class="line">fpImage = imread(<span class="string">'watermarkImage.bmp'</span>);</span><br><span class="line">watermarkImage = double(fpImage);</span><br><span class="line"></span><br><span class="line">figure;</span><br><span class="line">imshow(qrImage);</span><br><span class="line">title(<span class="string">'the qrCode Image!'</span>);</span><br><span class="line"></span><br><span class="line">figure;</span><br><span class="line">imshow(uint8(watermarkImage));</span><br><span class="line">title(<span class="string">'the image with water marks!'</span>);</span><br></pre></td></tr></table></figure></p>
+<p>Then the QR Code Image and fingerprint image are displayed.<br><img src="/images/thesis/2.jpg" alt="figure 2"><br><img src="/images/thesis/3.jpg" alt="figure 3"></p>
+<h3 id="Step2:_Encoding">Step2: Encoding</h3><p>Use the algorithm below to encode the QRcode with fingerprint image.<br><figure class="highlight matlab"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br></pre></td><td class="code"><pre><span class="line"><span class="matrix">[m,n]</span> = <span class="built_in">size</span>(watermarkImage);</span><br><span class="line">newwatermark=<span class="built_in">zeros</span>(m,n);</span><br><span class="line">newwatermark2 = <span class="built_in">zeros</span>(m,n);</span><br><span class="line">multiwatermarkImage = <span class="built_in">zeros</span>(<span class="number">2</span>*m,<span class="number">2</span>*n);</span><br><span class="line">orimod = <span class="built_in">zeros</span>(<span class="number">2</span>*m,<span class="number">2</span>*n);</span><br><span class="line"></span><br><span class="line">qrImage1 = qrImage;</span><br><span class="line">qrImage2 = qrImage;</span><br><span class="line"></span><br><span class="line"><span class="keyword">for</span> <span class="built_in">i</span>=<span class="number">1</span>:m</span><br><span class="line">  <span class="keyword">for</span> <span class="built_in">j</span>=<span class="number">1</span>:n</span><br><span class="line">    orimod(<span class="built_in">i</span>,<span class="built_in">j</span>)=<span class="built_in">mod</span>(qrImage(<span class="built_in">i</span>,<span class="built_in">j</span>,<span class="number">1</span>),<span class="number">4</span>);</span><br><span class="line">    orimod(<span class="built_in">i</span>+m,<span class="built_in">j</span>) = <span class="built_in">mod</span>(qrImage(<span class="built_in">i</span>+m,<span class="built_in">j</span>,<span class="number">1</span>),<span class="number">4</span>);</span><br><span class="line">    orimod(<span class="built_in">i</span>,<span class="built_in">j</span>+n) = <span class="built_in">mod</span>(qrImage(<span class="built_in">i</span>,<span class="built_in">j</span>+n,<span class="number">1</span>),<span class="number">4</span>);</span><br><span class="line">    orimod(<span class="built_in">i</span>+m,<span class="built_in">j</span>+n) = <span class="built_in">mod</span>(qrImage(<span class="built_in">i</span>+m,<span class="built_in">j</span>+n,<span class="number">1</span>),<span class="number">4</span>);</span><br><span class="line"></span><br><span class="line">    qrImage1(<span class="built_in">i</span>,<span class="built_in">j</span>,<span class="number">1</span>) = qrImage(<span class="built_in">i</span>,<span class="built_in">j</span>,<span class="number">1</span>)-orimod(<span class="built_in">i</span>,<span class="built_in">j</span>);</span><br><span class="line">    qrImage1(<span class="built_in">i</span>+m,<span class="built_in">j</span>,<span class="number">1</span>) = qrImage(<span class="built_in">i</span>+m,<span class="built_in">j</span>,<span class="number">1</span>)-orimod(<span class="built_in">i</span>+m,<span class="built_in">j</span>);</span><br><span class="line">    qrImage1(<span class="built_in">i</span>,<span class="built_in">j</span>+n,<span class="number">1</span>) = qrImage(<span class="built_in">i</span>,<span class="built_in">j</span>+n,<span class="number">1</span>)-orimod(<span class="built_in">i</span>,<span class="built_in">j</span>+n);</span><br><span class="line">    qrImage1(<span class="built_in">i</span>+m,<span class="built_in">j</span>+n,<span class="number">1</span>) = qrImage(<span class="built_in">i</span>+m,<span class="built_in">j</span>+n,<span class="number">1</span>)-orimod(<span class="built_in">i</span>+m,<span class="built_in">j</span>+n);</span><br><span class="line"></span><br><span class="line">    k1 = <span class="built_in">fix</span>(watermarkImage(<span class="built_in">i</span>,<span class="built_in">j</span>));</span><br><span class="line">    k2 = <span class="built_in">fix</span>(k1/<span class="number">4</span>);</span><br><span class="line">    k3 = <span class="built_in">fix</span>(k2/<span class="number">4</span>);</span><br><span class="line">    k4 = <span class="built_in">fix</span>(k3/<span class="number">4</span>);</span><br><span class="line"></span><br><span class="line">    multiwatermarkImage(<span class="built_in">i</span>,<span class="built_in">j</span>) = <span class="built_in">mod</span>(k1,<span class="number">4</span>);</span><br><span class="line">    multiwatermarkImage(<span class="built_in">i</span>+m,<span class="built_in">j</span>) = <span class="built_in">mod</span>(k2,<span class="number">4</span>);</span><br><span class="line">    multiwatermarkImage(<span class="built_in">i</span>,<span class="built_in">j</span>+n) = <span class="built_in">mod</span>(k3,<span class="number">4</span>);</span><br><span class="line">    multiwatermarkImage(<span class="built_in">i</span>+m,<span class="built_in">j</span>+n) = <span class="built_in">mod</span>(k4,<span class="number">4</span>);</span><br><span class="line"></span><br><span class="line">    qrImage2(<span class="built_in">i</span>,<span class="built_in">j</span>,<span class="number">1</span>) = qrImage1(<span class="built_in">i</span>,<span class="built_in">j</span>,<span class="number">1</span>) + multiwatermarkImage(<span class="built_in">i</span>,<span class="built_in">j</span>);</span><br><span class="line">    qrImage2(<span class="built_in">i</span>+m,<span class="built_in">j</span>,<span class="number">1</span>) = qrImage1(<span class="built_in">i</span>+m,<span class="built_in">j</span>,<span class="number">1</span>) + multiwatermarkImage(<span class="built_in">i</span>+m,<span class="built_in">j</span>);</span><br><span class="line">    qrImage2(<span class="built_in">i</span>,<span class="built_in">j</span>+n,<span class="number">1</span>) = qrImage1(<span class="built_in">i</span>,<span class="built_in">j</span>+n,<span class="number">1</span>) + multiwatermarkImage(<span class="built_in">i</span>,<span class="built_in">j</span>+n);</span><br><span class="line">    qrImage2(<span class="built_in">i</span>+m,<span class="built_in">j</span>+n,<span class="number">1</span>) = qrImage1(<span class="built_in">i</span>+m,<span class="built_in">j</span>+n,<span class="number">1</span>) + multiwatermarkImage(<span class="built_in">i</span>+m,<span class="built_in">j</span>+n);</span><br><span class="line">  <span class="keyword">end</span></span><br><span class="line"><span class="keyword">end</span></span><br><span class="line"></span><br><span class="line">QrImagewithwatermarkImage=qrImage2;</span><br><span class="line">figure;</span><br><span class="line">imshow(QrImagewithwatermarkImage);</span><br><span class="line">title(<span class="string">'the image with water marks!'</span>);</span><br></pre></td></tr></table></figure></p>
+<p>Now we can see the QRcode image with watermark.<br><img src="/images/thesis/4.jpg" alt="figure 4"></p>
+<h3 id="Step3:_Decoding">Step3: Decoding</h3><p>Use the same algorithm to decode the image with watermark. Then get the reversed fingerprint image.<br><figure class="highlight matlab"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">for</span> <span class="built_in">i</span>=<span class="number">1</span>:m</span><br><span class="line">  <span class="keyword">for</span> <span class="built_in">j</span>=<span class="number">1</span>:n</span><br><span class="line">    x1 = <span class="built_in">mod</span>(QrImagewithwatermarkImage(<span class="built_in">i</span>,<span class="built_in">j</span>,<span class="number">1</span>),<span class="number">4</span>);</span><br><span class="line">    x2 = <span class="built_in">mod</span>(QrImagewithwatermarkImage(<span class="built_in">i</span>+m,<span class="built_in">j</span>,<span class="number">1</span>),<span class="number">4</span>);</span><br><span class="line">    x3 = <span class="built_in">mod</span>(QrImagewithwatermarkImage(<span class="built_in">i</span>,<span class="built_in">j</span>+n,<span class="number">1</span>),<span class="number">4</span>);</span><br><span class="line">    x4 = <span class="built_in">mod</span>(QrImagewithwatermarkImage(<span class="built_in">i</span>+m,<span class="built_in">j</span>+n,<span class="number">1</span>),<span class="number">4</span>);</span><br><span class="line"></span><br><span class="line">    newwatermark(<span class="built_in">i</span>,<span class="built_in">j</span>) = x1 + x2*<span class="number">4</span> + x3*<span class="number">16</span> + x4*<span class="number">64</span>;</span><br><span class="line">  <span class="keyword">end</span></span><br><span class="line"><span class="keyword">end</span></span><br><span class="line">newwatermark2 = uint8(newwatermark);</span><br><span class="line">figure;</span><br><span class="line">imshow(newwatermark2);</span><br><span class="line">title(<span class="string">'the watermark!'</span>);</span><br></pre></td></tr></table></figure></p>
+<p><img src="/images/thesis/5.jpg" alt="figure 5"></p>
+	  
+
+	  <div>
+  		<center>
+		  <div class="pagination">
+<ul class="pagination">
+	
+	
+	
+	
+	
+		
+	
+		
+	
+		
+	
+		
+			
+		
+	
+		
+			
+		
+	
+		
+			
+		
+	
+		
+	
+		
+			
+			
+		
+	
+		
+			
+			
+			
+		
+	
+	
+		<li class="prev"><a href="/2015/06/25/Algorithm/" class="alignleft prev"><i class="fa fa-arrow-circle-o-left"></i>prev</a></li>
+	
+	<li><a href="/"><i class="fa fa-archive"></i>Home</a></li>
+	
+		<li class="next"><a href="/2015/06/22/1Introduction/" class="alignright next">next<i class="fa fa-arrow-circle-o-right"></i></a></li>
+	
+</ul>
+</div>
+
+		</center>
+	  </div>
+	  
+	</div> <!-- col-md-9/col-md-12 -->
+	
+  </div><!-- row -->
+
+	</div>
+  </div>
+  <div class="container-narrow">
+	<footer> <p>
+  &copy; 2015 <a href="http://www.cnblogs.com/Kassadin/" target="_blank">Li Yi</a>
+  
+      . Thanks for <a href="http://zespia.tw/hexo/" target="_blank">Hexo</a> , <a href="http://getbootstrap.com/" target="_blank">Twitter Bootstrap</a> and <a href="http://github.com/wzpan/hexo-theme-wixo/">Wixo</a>.
+</p>
+ </footer>
+  </div> <!-- container-narrow -->
+  
+<a id="gotop" href="#">
+  <span>▲</span>
+</a>
+
+<script src="/js/jquery.imagesloaded.min.js"></script>
+<script src="/js/gallery.js"></script>
+<script src="/js/bootstrap.min.js"></script>
+<script src="/js/jquery.tableofcontents.min.js"></script>
+<script src="/js/tocgenerator.min.js"></script>
+<script src="/js/main.js"></script>
+
+
+
+
+<link rel="stylesheet" href="/fancybox/jquery.fancybox.css" media="screen" type="text/css">
+<script src="/fancybox/jquery.fancybox.pack.js"></script>
+<script type="text/javascript">
+(function($){
+  $('.fancybox').fancybox();
+})(jQuery);
+</script>
+
+
+<!-- mathjax config similar to math.stackexchange -->
+
+<script type="text/x-mathjax-config">
+  MathJax.Hub.Config({
+    tex2jax: {
+      inlineMath: [ ['$','$'], ["\\(","\\)"] ],
+      processEscapes: true
+    }
+  });
+</script>
+
+<script type="text/x-mathjax-config">
+    MathJax.Hub.Config({
+      tex2jax: {
+        skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']
+      }
+    });
+</script>
+
+<script type="text/x-mathjax-config">
+    MathJax.Hub.Queue(function() {
+        var all = MathJax.Hub.getAllJax(), i;
+        for(i=0; i < all.length; i += 1) {
+            all[i].SourceElement().parentNode.className += ' has-jax';
+        }
+    });
+</script>
+
+<script type="text/javascript" src="http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML">
+</script>
+
+
+</body>
+</html>

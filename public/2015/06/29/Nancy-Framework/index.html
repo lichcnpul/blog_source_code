@@ -1,0 +1,255 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+  <meta charset="utf-8">
+  
+  <title>3.2 Nancy Framework | すべてはシュタインズゲートの選択だ</title>
+  <meta name="author" content="Li Yi">
+  
+  <meta name="description" content="1 SOA and Web Service1.1 What is SOASOA（service-oriented architecture）即面向服务的体系结构。简单来说，SOA就是一种进行系统开发的新的体系架构，在基于SOA架构的系统中，具体应用程序的功能是由一些松耦合并且具有统一接口定义方式的组">
+  
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+
+  <meta property="og:title" content="3.2 Nancy Framework"/>
+  <meta property="og:site_name" content="すべてはシュタインズゲートの選択だ"/>
+
+  
+    <meta property="og:image" content="undefined"/>
+  
+
+  
+    <link rel="alternative" href="/atom.xml" title="すべてはシュタインズゲートの選択だ" type="application/atom+xml">
+  
+  
+    <link href="/favicon.png" rel="icon">
+  
+  
+  <link rel="stylesheet" href="/css/bootstrap.min.css" media="screen" type="text/css">
+  <link rel="stylesheet" href="/css/font-awesome.css" media="screen" type="text/css">
+  <link rel="stylesheet" href="/css/style.css" media="screen" type="text/css">
+  <link rel="stylesheet" href="/css/highlight.css" media="screen" type="text/css">
+  <link rel="stylesheet" href="/css/google-fonts.css" media="screen" type="text/css">
+  <link rel="stylesheet" href="/css/responsive.css" media="screen" type="text/css">  
+  <link rel="stylesheet" href="/css/sidenav.css" media="screen" type="text/css">  
+  <!--[if lt IE 9]><script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script><![endif]-->
+
+  <script src="/js/jquery-2.0.3.min.js"></script>
+
+  <!-- analytics -->
+  
+
+</head>
+
+<body id="body" data-spy="scroll" data-target=".toc">
+  <div class="container" id="container">
+	<div class="content">
+	  <div class="page-header">		
+  <h1><a class="brand" href="/">すべてはシュタインズゲートの選択だ</a><span class="split"></span><span class="title">3.2 Nancy Framework</span><span class="date" id="title-date"><i class="fa fa-clock-o"></i> 2015-06-29</span></h1>
+</div>		
+
+<div class="row page">
+  <!-- cols -->	
+  
+  <div class="col-xs-12 col-sm-3 col-md-3 toc"> 
+	<!-- toc -->
+<script type="text/javascript">
+		jQuery(document).ready(function() {
+ 		   generateWikiTOC('.note', '.toc',  2 , 2 );
+		});
+</script>
+  </div><!-- col-md-3 -->
+  
+  
+
+  
+  <div class="col-xs-12 col-sm-9 col-md-9 note">
+	
+
+	  <!-- content -->
+	  <h2 id="1_SOA_and_Web_Service">1 SOA and Web Service</h2><h3 id="1-1_What_is_SOA">1.1 What is SOA</h3><p>SOA（service-oriented architecture）即面向服务的体系结构。简单来说，SOA就是一种进行系统开发的新的体系架构，在基于SOA架构的系统中，具体应用程序的功能是由一些松耦合并且具有统一接口定义方式的组件（也就是service）组合构建起来的。使用SOA架构的优势在于实现了应用系统的跨平台性和可扩展性。</p>
+<p>以我们的指纹认证系统举例，现在我们要实现一个Android手机客户端和一个服务器端，Android客户端通过与服务器端通信调用服务器端提供的API，以实现指纹上传，指纹认证等功能。在传统软件架构模式下，客户端和服务器端开发应处于同一个技术架构当中，比如客户端采用Android（Java），服务器端采用Java EE；或者客户端采用Windows Phone，服务器端采用.net Framework.这种软件架构模式是一种紧耦合的体系结构。其优点在于软件模块紧密协作，调用相同的底层模块，然而这种模式的缺点也十分明显：最大的问题是扩展性差的问题。比如.net开发的服务程序要求客户端同样采用.net技术，这种技术架构已不能满足移动互联网发展的需要。</p>
+<p>在移动互联网时代，一项服务往往要为多种客户端提供支持，比如社交软件Line的登录服务，既要为PC客户端提供支持，又要为Android应用提供支持，同时也需要提供iOS的服务支持，甚至还要提供浏览器的相关支持；如果采用传统的体系结构，每添加一个平台都要重写相应的服务，而这些服务所提供的功能几乎是一模一样的，这显示不符合DRY（Don‘t Repeat Yourself）的软件工程原则。在这样的背景下，SOA架构便迅速发展起来。</p>
+<p>在SOA架构下，服务器端的每个应用功能都被封装成服务，而这些服务都是平台无关的。客户端与服务器端通过消息传递的方式进行通信，客户端需要调用服务器功能时，直接面向服务接口发送消息，这样就实现了从面向具体技术的体系结构向面向服务的体系结构的转变。无论客户端采用Android技术，还是iOS技术，还是浏览器，抑或是PC客户端，它们都同一调用相同的服务，服务器端不需要做任何改变即可支持多种平台的扩展。这种面向服务的编程模式极大的加强了应用架构的跨平台行和可扩展性，逐渐成为移动互联网时代最主流的架构模式。Web Service是实现SOA最为基础的一项技术之一。<br><img src="/images/thesis/chapter3/2.bmp" alt="SOA"></p>
+<h3 id="1-2_Web_Service">1.2 Web Service</h3><p>Web Service是实现SOA最常用的技术之一。它通过标准的Web协议提供服务，目的是保证不同平台的应用服务可以互操作。（<a href="https://en.wikipedia.org/wiki/Web_service" target="_blank" rel="external">Web Service</a>）</p>
+<p>Web Service技术经过多年发展，目前出现了两大主要的类型：</p>
+<ol>
+<li>基于SOAP的Web Service</li>
+<li>基于REST的Web Service</li>
+</ol>
+<p>基于SOAP的Web Service：SOAP用来描述传递信息的格式， WSDL用来描述如何访问具体的接口，UDDI用来管理，分发，查询Web Service。SOAP采用了已经广泛使用的两个协议:HTTP和XML（标准通用标记语言下的一个子集）。HTTP用于实现SOAP的RPC风格的传输, 而XML是它的编码模式。使用SOAP，使得Web Service具备了良好的可扩展性，完全与厂商无关，与编程语言无关，与平台无关。</p>
+<p>基于REST的Web Service：RT Fielding博士的博士论文《Architectural Styles and the Design of Network-based Software Architectures》奠定了REST风格Web Service的基础。REST 是英文 Representational State Transfer 的缩写。它具有如下特征：</p>
+<ol>
+<li>首先REST只是一种风格，不是一种标准</li>
+<li>REST是以资源为中心的</li>
+<li>REST的目的是决定如何使一个定义良好的Web程序向前推进</li>
+<li>REST充分利用或者说极端依赖HTTP协议：</li>
+</ol>
+<ul>
+<li>它通过逻辑URI定位资源</li>
+<li>通过分辨 HTTP Request Header 信息来分辨客户端是想要取得资源的哪一种表现形式的数据。</li>
+<li>在 REST 架构中，用不同的 HTTP 请求方法来处理对资源的 CRUD（创建、读取、更新和删除）操作</li>
+</ul>
+<p><img src="/images/thesis/chapter3/3.bmp" alt="REST API"><br>REST风格的这些特点，使它比SOAP更加轻量，更充分利用HTTP协议，甚至可以说REST真正表达了HTTP协议的设计原本，REST的出现彻底改变了Web Service的现状，适应了移动互联网的发展趋势，现在主流的移动客户端开发基本都转向了REST风格的Web Service.为了实现Android端的指纹识别客户端，本系统也采用了REST风格的Web Service.</p>
+<h2 id="2_MVC_and_Nancy_Framework">2 MVC and Nancy Framework</h2><p>本系统采用Nancy Framework实现了一个轻量级的REST风格的Web Service。Nancy Framework是基于.net和mono平台的超轻量级Web框架，它遵循MVC框架模式，并设计用来提供REST风格的Web服务。其<a href="http://nancyfx.org/" target="_blank" rel="external">官方网站</a>介绍了Nancy具有如下特点：</p>
+<ol>
+<li>Nancy is a lightweight, low-ceremony, framework for building HTTP based services on .Net and Mono. The goal of the framework is to stay out of the way as much as possible and provide a super-duper-happy-path to all interactions.</li>
+<li>Nancy is designed to handle DELETE, GET, HEAD, OPTIONS, POST, PUT and PATCH requests and provides a simple, elegant, Domain Specific Language (DSL) for returning a response with just a couple of keystrokes.</li>
+<li>Nancy is built to run anywhere.</li>
+</ol>
+<h2 id="2-1_MVC框架模式">2.1 MVC框架模式</h2><p>Nancy Framework的设计思想来源于Ruby的Sinatra Framework，其基本思想在于MVC框架模式。MVC模式即Model－View－Controller模式，其中：</p>
+<ul>
+<li>Model表示模型，是应用程序中处理应用程序数据逻辑的部分。通常用来封装数据对象存储数据。</li>
+<li>View表示视图，是应用程序中处理数据显示的部分。通常视图数据需要从模型获取。</li>
+<li>Controller表示控制器，控制器负责从视图读取数据，控制用户输入，并向模型发送数据。</li>
+</ul>
+<p><img src="/images/thesis/chapter3/4.bmp" alt="MVC"><br>上图展示了MVC模式基本工作原理：</p>
+<ol>
+<li>首先，用户向应用程序发出请求，等待服务器响应</li>
+<li>controller接收用户请求，控制器根据请求内容决定分发给哪个model或view处理</li>
+<li>controller向model请求数据</li>
+<li>model从database获取数据，并将数据返回给controller</li>
+<li>controller将model获取的数据发送给相应view</li>
+<li>view根据model数据填充视图，并将结果返回给controller</li>
+<li>controller将view返回给用户。</li>
+</ol>
+<p>通过MVC框架模式，实现了应用程序业务逻辑和表现的分离，降低了模块之间的耦合性，现在越来越多的应用系统均采用MVC模式，许多框架也都遵循MVC模式，比如Ruby on Rails，Java Spring MVC，ASP.net MVC等等。本系统采用的Nancy Framework也是.net上一个超轻量级的MVC框架。</p>
+<h2 id="2-2_Nancy架构思想">2.2 Nancy架构思想</h2><p>Nancy Framework是.net平台上一个基于MVC模式的超轻量级Web框架，Nancy Project的项目结构如下图所示：<br><img src="/images/thesis/chapter3/5.png" alt="Nancy"><br>Nancy Framework中Model，Module，Views分别代表了M，V，C。</p>
+<ol>
+<li><p>控制器采用REST风格，其基本模式如下：当用户在浏览器输入<a href="http://hostaddress/，Nancy" target="_blank" rel="external">http://hostaddress/，Nancy</a> Framework的控制器类会首先根据uri地址匹配相应的controller.这种机制被称为Route机制，是Nancy Framework实现REST风格控制器的核心。当用户以GET方式请求根目录资源时，控制器会根据Route机制查找GET[“/“]的控制器，匹配成功以后，由该控制器处理用户请求。控制器可以调用相应的View资源和Model资源最终响应用户请求。</p>
+<figure class="highlight csharp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">Get[<span class="string">"/"</span>] = parameters =&gt;</span><br><span class="line">&#123;</span><br><span class="line">    <span class="keyword">return</span> View[<span class="string">"index"</span>];</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>视图以HTML为基本风格，在Nancy官方支持的视图引擎为Radar引擎，其语法大致与HTML相似。</p>
+<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="doctype">&lt;!DOCTYPE html&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="title">html</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="title">head</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="title">meta</span> <span class="attribute">charset</span>=<span class="value">"utf-8"</span> /&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="title">title</span>&gt;</span>Fingerprint Web Service Page<span class="tag">&lt;/<span class="title">title</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="title">head</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="title">body</span>&gt;</span></span><br><span class="line">    Content</span><br><span class="line"><span class="tag">&lt;/<span class="title">body</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="title">html</span>&gt;</span></span><br></pre></td></tr></table></figure>
+</li>
+<li><p>模型一般以Database为模版映射为对象，支持大多ORM框架。</p>
+</li>
+</ol>
+<h2 id="3_A_System_Instance">3 A System Instance</h2><p>指纹识别系统的系统详细架构图如下所示：<br><img src="/images/thesis/chapter3/6.bmp" alt="System Architecture"></p>
+	  
+
+	  <div>
+  		<center>
+		  <div class="pagination">
+<ul class="pagination">
+	
+	
+	
+	
+	
+		
+	
+		
+	
+		
+	
+		
+			
+			
+		
+	
+		
+			
+			
+			
+		
+			
+		
+	
+		
+	
+		
+			
+		
+	
+		
+			
+		
+	
+		
+	
+	
+		<li class="prev disabled"><a><i class="fa fa-arrow-circle-o-left"></i>prev</a></li>
+	
+	<li><a href="/"><i class="fa fa-archive"></i>Home</a></li>
+	
+		<li class="next"><a href="/2015/06/26/3System-Architecture/" class="alignright next">next<i class="fa fa-arrow-circle-o-right"></i></a></li>
+	
+</ul>
+</div>
+
+		</center>
+	  </div>
+	  
+	</div> <!-- col-md-9/col-md-12 -->
+	
+  </div><!-- row -->
+
+	</div>
+  </div>
+  <div class="container-narrow">
+	<footer> <p>
+  &copy; 2015 <a href="http://www.cnblogs.com/Kassadin/" target="_blank">Li Yi</a>
+  
+      . Thanks for <a href="http://zespia.tw/hexo/" target="_blank">Hexo</a> , <a href="http://getbootstrap.com/" target="_blank">Twitter Bootstrap</a> and <a href="http://github.com/wzpan/hexo-theme-wixo/">Wixo</a>.
+</p>
+ </footer>
+  </div> <!-- container-narrow -->
+  
+<a id="gotop" href="#">
+  <span>▲</span>
+</a>
+
+<script src="/js/jquery.imagesloaded.min.js"></script>
+<script src="/js/gallery.js"></script>
+<script src="/js/bootstrap.min.js"></script>
+<script src="/js/jquery.tableofcontents.min.js"></script>
+<script src="/js/tocgenerator.min.js"></script>
+<script src="/js/main.js"></script>
+
+
+
+
+<link rel="stylesheet" href="/fancybox/jquery.fancybox.css" media="screen" type="text/css">
+<script src="/fancybox/jquery.fancybox.pack.js"></script>
+<script type="text/javascript">
+(function($){
+  $('.fancybox').fancybox();
+})(jQuery);
+</script>
+
+
+<!-- mathjax config similar to math.stackexchange -->
+
+<script type="text/x-mathjax-config">
+  MathJax.Hub.Config({
+    tex2jax: {
+      inlineMath: [ ['$','$'], ["\\(","\\)"] ],
+      processEscapes: true
+    }
+  });
+</script>
+
+<script type="text/x-mathjax-config">
+    MathJax.Hub.Config({
+      tex2jax: {
+        skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']
+      }
+    });
+</script>
+
+<script type="text/x-mathjax-config">
+    MathJax.Hub.Queue(function() {
+        var all = MathJax.Hub.getAllJax(), i;
+        for(i=0; i < all.length; i += 1) {
+            all[i].SourceElement().parentNode.className += ' has-jax';
+        }
+    });
+</script>
+
+<script type="text/javascript" src="http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML">
+</script>
+
+
+</body>
+</html>
