@@ -2,57 +2,57 @@
 <html>
 <head>
   <meta charset="utf-8">
-
+  
   <title>thesis | すべてはシュタインズゲートの選択だ</title>
   <meta name="author" content="Li Yi">
-
+  
   <meta name="description" content="1 IntroductionThis part has been done.However, It need some modification later. Chapter 1
 1.1 Fingerprint Certification SystemFingerprint identificati">
-
-
+  
+  
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
 
   <meta property="og:title" content="thesis"/>
   <meta property="og:site_name" content="すべてはシュタインズゲートの選択だ"/>
 
-
+  
     <meta property="og:image" content="undefined"/>
+  
 
-
-
+  
     <link rel="alternative" href="/atom.xml" title="すべてはシュタインズゲートの選択だ" type="application/atom+xml">
-
-
+  
+  
     <link href="/favicon.png" rel="icon">
-
-
+  
+  
   <link rel="stylesheet" href="/css/bootstrap.min.css" media="screen" type="text/css">
   <link rel="stylesheet" href="/css/font-awesome.css" media="screen" type="text/css">
   <link rel="stylesheet" href="/css/style.css" media="screen" type="text/css">
   <link rel="stylesheet" href="/css/highlight.css" media="screen" type="text/css">
   <link rel="stylesheet" href="/css/google-fonts.css" media="screen" type="text/css">
-  <link rel="stylesheet" href="/css/responsive.css" media="screen" type="text/css">
-  <link rel="stylesheet" href="/css/sidenav.css" media="screen" type="text/css">
+  <link rel="stylesheet" href="/css/responsive.css" media="screen" type="text/css">  
+  <link rel="stylesheet" href="/css/sidenav.css" media="screen" type="text/css">  
   <!--[if lt IE 9]><script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script><![endif]-->
 
   <script src="/js/jquery-2.0.3.min.js"></script>
 
   <!-- analytics -->
-
+  
 
 </head>
 
 <body id="body" data-spy="scroll" data-target=".toc">
   <div class="container" id="container">
 	<div class="content">
-	  <div class="page-header">
+	  <div class="page-header">		
   <h1><a class="brand" href="/">すべてはシュタインズゲートの選択だ</a><span class="split"></span><span class="title">thesis</span><span class="date" id="title-date"><i class="fa fa-clock-o"></i> 2015-07-03</span></h1>
-</div>
+</div>		
 
 <div class="row page">
-  <!-- cols -->
-
-  <div class="col-xs-12 col-sm-3 col-md-3 toc">
+  <!-- cols -->	
+  
+  <div class="col-xs-12 col-sm-3 col-md-3 toc"> 
 	<!-- toc -->
 <script type="text/javascript">
 		jQuery(document).ready(function() {
@@ -60,12 +60,12 @@
 		});
 </script>
   </div><!-- col-md-3 -->
+  
+  
 
-
-
-
+  
   <div class="col-xs-12 col-sm-9 col-md-9 note">
-
+	
 
 	  <!-- content -->
 	  <h1 id="1_Introduction">1 Introduction</h1><p>This part has been done.However, It need some modification later. <a href="http://lichcnpul.github.io/2015/06/22/1Introduction/" target="_blank" rel="external">Chapter 1</a></p>
@@ -85,12 +85,12 @@
 <li>Using enhanced security defense strategy, to solve the security issue.</li>
 </ol>
 <p>This paper focuses on the server solution based on enhanced security strategy.</p>
-<h2 id="1-2_Security_Threat_and_Defense_Strategy">1.2 Security Threat and Defense Strategy</h2><p>The following security threat will occur in the web-based fingerprint authentication system:</p>
+<h2 id="1-2_Security_Threat">1.2 Security Threat</h2><p>The following security threat will occur in the web-based fingerprint authentication system:</p>
 <h3 id="1-2-1_Intercept_Information">1.2.1 Intercept Information</h3><p>The purpose of intercepting information is to steal data content itself. This type of security threat is commonly referred to as data security threats. In the fingerprint authentication system, client needs to send the fingerprint image file to the server through network. During transmission, once the system is attacked, it may cause the fingerprint image data to be intercepted, and then the user information will be stolen.<br><img src="/images/thesis/chapter1/1.bmp" alt="figure 3"></p>
 <h3 id="1-2-2_Replay_attack">1.2.2 Replay attack</h3><p>Destroying the validity of certification is a basic form of authentication attack. A replay attack is a form of network attack in which a valid data transmission is maliciously or fraudulently repeated or delayed. This is carried out either by the originator or by an adversary who intercepts the data and retransmits it, possibly as part of a masquerade attack by IP packet substitution.</p>
 <p>The classic example of replay attack is as follows:<br><img src="/images/thesis/chapter1/2.bmp" alt="figure 4"><br>Suppose Alice wants to prove her identity to Bob. Bob requests her password as proof of identity, which Alice dutifully provides (possibly after some transformation like a hash function); meanwhile, Eve is eavesdropping on the conversation and keeps the password (or the hash). After the interchange is over, Eve (posing as Alice) connects to Bob; when asked for a proof of identity, Eve sends Alice’s password (or hash) read from the last session, which Bob accepts thus granting access to Eve.<br><img src="/images/thesis/chapter1/3.bmp" alt="figure 5"></p>
 <h3 id="1-2-3_Data_Modification">1.2.3 Data Modification</h3><p>This type of network attacks is an extension of replay attack. Attackers using replay attack damage the system certification to enter the system. Then they can send the forged data to the server easily. And even they will do SQL injection attacks or modify server information. The basic model is as follows:<br><img src="/images/thesis/chapter1/4.bmp" alt="figure 6"></p>
-<h2 id="1-3_Fingerprint_Certification_System_with_Enhanced_Security">1.3 Fingerprint Certification System with Enhanced Security</h2><h3 id="1-3-1_Image_Encryption">1.3.1 Image Encryption</h3><p>For attacks in 1.2.1, the usual defense strategy is image encryption. Before the client sends the image file, we can use a specific algorithm to encrypt image. Then client sends the file to the server. After the server receives the file, we will use the same algorithm to decrypt the image. In this case, even if attackers intercept the image file, he still cannot get the real information, thus preventing information leakage.<br><img src="/images/thesis/chapter1/5.bmp" alt="figure 7"></p>
+<h2 id="1-3_Defense_Strategy">1.3 Defense Strategy</h2><h3 id="1-3-1_Image_Encryption">1.3.1 Image Encryption</h3><p>For attacks in 1.2.1, the usual defense strategy is image encryption. Before the client sends the image file, we can use a specific algorithm to encrypt image. Then client sends the file to the server. After the server receives the file, we will use the same algorithm to decrypt the image. In this case, even if attackers intercept the image file, he still cannot get the real information, thus preventing information leakage.<br><img src="/images/thesis/chapter1/5.bmp" alt="figure 7"></p>
 <h3 id="1-3-2_Timestamp_Authentication">1.3.2 Timestamp Authentication</h3><p>It is efficient defense against replay attack to add timestamp to the system. To use this approach, we should ensure synchronization between client and server. First, the server generates a dynamic password from time to time. Second, the client sends a request to get the dynamic password. Finally, client sends username and dynamic password to login system. In this case, even if the middle man steal the password, it is only effective in a very short time.<br><img src="/images/thesis/chapter1/6.bmp" alt="figure 8"></p>
 <h3 id="1-3-3_Challenge-Response_Authentication">1.3.3 Challenge-Response Authentication</h3><p>Challenge-Response Authentication is another effective method to prevent replay attack. The basic model is as follows:</p>
 <ol>
@@ -295,66 +295,69 @@
 <h1 id="6_Matching">6 Matching</h1><h2 id="6-1_Basic_Concept">6.1 Basic Concept</h2><p>After the server receives the picture send from client, it will decode it and get the real fingerprint picture. Now the fingerprint picture is send to matching module. It will be matched with fingerprints stored in the database. Basically, the matching module will extract fingerprint features from fingerprint picture. Traditionally, two fingerprints have been compared using discrete features called minutiae. These features include points in a finger’s friction skin where ridges end (called a ridge ending) or split (called a ridge bifurcation). The figure shows an example of the two types of minutiae.<br><img src="/images/thesis/chapter6/1.png" alt="minutiae"><br>The matching engine will compare two fingerprints by minutiae. After that, it will give a matching score. If the fingerprint is matching, the match score will be high. Otherwise, the score will be zero.</p>
 <h2 id="6-2_SourceAFIS">6.2 SourceAFIS</h2><p>There are some open-source fingerprint matching software on the internet. We tried NBIS software and SourceAFIS software. We also used a commercial software called UrU SDK to do the experiment. Finally, we choose SourceAFIS as our matching engine. The matching algorithm is like this:<br><figure class="highlight csharp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">static</span> AfisEngine Afis = <span class="keyword">new</span> AfisEngine();</span><br><span class="line">Fingerprint fp1 = <span class="keyword">new</span> Fingerprint();</span><br><span class="line">Person person1 = <span class="keyword">new</span> Person();</span><br><span class="line">person1.Fingerprints.Add(fp1);</span><br><span class="line"><span class="comment">// person2 do the same operation as person1</span></span><br><span class="line">Afis.Extract(person1);</span><br><span class="line">Afis.Extract(person2);</span><br><span class="line">score = Afis.Verify(person1, person2);</span><br></pre></td></tr></table></figure></p>
 <p>Step1: Define a match engine Afis.<br>Step2: Define 2 Fingerprint Objects from fingerprint pictures.<br>Step3: Define 2 Person Objects and add the Fingerprint Objects to Person.<br>Step4: Use the method Extract of match engine to extract features.<br>Step5: Use the method Verify of match engine to get the match score.<br>Step6: The client determines whether the authentication is passed by the score.</p>
-<h1 id="7_Results">7 Results</h1><h2 id="7-1_Cost_and_Usability">7.1 Cost and Usability</h2><p>The cost is lower than traditional solution. (A table to compare)<br>The usability is good and the matching result is correct.<br><table border="1"><br>  <tr><br>    <th>Sample Number</th><br>    <th>Correct Case</th><br>    <th>Wrong Case</th><br>  </tr><br>  <tr><br>    <td></td><br>    <td><img src="/images/thesis/chapter7/1.bmp" alt="Correct Case"></td><br>    <td><img src="/images/thesis/chapter7/2.bmp" alt="Wrong Case"></td><br>  </tr><br>  <tr><br>    <td>Left Index 1</td><br>    <td>54.00148</td><br>    <td>0</td><br>  </tr><br>  <tr><br>    <td>Left Index 2</td><br>    <td>56.52282</td><br>    <td>0</td><br>  </tr><br>  <tr><br>    <td>Left Index 3</td><br>    <td>41.92099</td><br>    <td>0</td><br>  </tr><br></table></p>
+<h1 id="7_Results">7 Results</h1><h2 id="7-1_Cost_and_Usability">7.1 Cost and Usability</h2><p>The cost is lower than traditional solution. (A table to compare)<br>The usability is good and the matching result is correct.</p>
+<p><table border="1"><br>  <tr><br>    <th>Sample Number</th><br>    <th>Correct Case</th><br>    <th>Wrong Case</th><br>  </tr><br>  <tr><br>    <td></td><br>    <td><img src="/images/thesis/chapter7/1.bmp" alt="Correct Case"></td><br>    <td><img src="/images/thesis/chapter7/2.bmp" alt="Wrong Case"></td><br>  </tr><br>  <tr><br>    <td>Left Index 1</td><br>    <td>54.00148</td><br>    <td>0</td><br>  </tr><br>  <tr><br>    <td>Left Index 2</td><br>    <td>56.52282</td><br>    <td>0</td><br>  </tr><br>  <tr><br>    <td>Left Index 3</td><br>    <td>41.92099</td><br>    <td>0</td><br>  </tr><br></table></p>
 <h2 id="7-2_Security">7.2 Security</h2><p>It has solved the problem of information leakage. (An example)<br>It has solved the problem of replay attack. (An example)</p>
-<h1 id="8_Conclusion">8 Conclusion</h1><h1 id="Reference">Reference</h1>
+<h1 id="8_Conclusion">8 Conclusion</h1><h1 id="Reference">Reference</h1>	  
 
 	  <div>
   		<center>
 		  <div class="pagination">
 <ul class="pagination">
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+	
+	
+	
+	
+	
+		
+	
+		
+	
+		
+	
+		
+	
+		
+	
+		
+			
+			
+		
+	
+		
+			
+			
+		
+	
+		
+	
+		
+	
+		
+	
+		
+	
+		
+	
+		
+	
+		
+	
+	
 		<li class="prev disabled"><a><i class="fa fa-arrow-circle-o-left"></i>prev</a></li>
-
+	
 	<li><a href="/"><i class="fa fa-archive"></i>Home</a></li>
-
+	
 		<li class="next disabled"><a>next<i class="fa fa-arrow-circle-o-right"></i></a></li>
-
+	
 </ul>
 </div>
 
 		</center>
 	  </div>
-
+	  
 	</div> <!-- col-md-9/col-md-12 -->
-
+	
   </div><!-- row -->
 
 	</div>
@@ -362,12 +365,12 @@
   <div class="container-narrow">
 	<footer> <p>
   &copy; 2015 <a href="http://www.cnblogs.com/Kassadin/" target="_blank">Li Yi</a>
-
+  
       . Thanks for <a href="http://zespia.tw/hexo/" target="_blank">Hexo</a> , <a href="http://getbootstrap.com/" target="_blank">Twitter Bootstrap</a> and <a href="http://github.com/wzpan/hexo-theme-wixo/">Wixo</a>.
 </p>
  </footer>
   </div> <!-- container-narrow -->
-
+  
 <a id="gotop" href="#">
   <span>▲</span>
 </a>
